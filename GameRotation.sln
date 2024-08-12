@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRotation", "GameRotation\GameRotation.csproj", "{4A2BF979-0002-4200-B3F9-84760E990C13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardHook", "KeyboardHook\KeyboardHook.csproj", "{98AB30AD-3308-437B-9D1D-E102D1061D34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4A2BF979-0002-4200-B3F9-84760E990C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A2BF979-0002-4200-B3F9-84760E990C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A2BF979-0002-4200-B3F9-84760E990C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
