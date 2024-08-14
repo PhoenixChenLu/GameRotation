@@ -649,12 +649,12 @@ public enum VKeys
 	///<summary>
 	///Left MENU key
 	///</summary>
-	LMENU = 0xA4,
+	LALT = 0xA4,
 
 	///<summary>
 	///Right MENU key
 	///</summary>
-	RMENU = 0xA5,
+	RALT = 0xA5,
 
 	///<summary>
 	///Windows 2000/XP: Browser Back key
