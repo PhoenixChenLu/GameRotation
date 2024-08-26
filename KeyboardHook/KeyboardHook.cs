@@ -21,20 +21,6 @@ public class KeyboardHook : IDisposable
 		SetHook();
 	}
 
-	public KeyboardHook(LowLevelKeyboardProc hookCallback)
-	{
-		_hookCallback = hookCallback;
-		SetHook();
-	}
-
-	public void SetHookCallback(LowLevelKeyboardProc hookCallback)
-	{
-		if (_hookCallback.GetInvocationList().Contains(_defaultHookCallback)) _hookCallback -= _defaultHookCallback;
-		_hookCallback += hookCallback;
-		Dispose();
-		SetHook();
-	}
-
 	private void SetHook()
 	{
 		using var curProcess = Process.GetCurrentProcess();
@@ -51,15 +37,71 @@ public class KeyboardHook : IDisposable
 
 	#region 按键绑定逻辑储存
 
+	/// <summary>
+	/// 所有按键按下都会触发的事件
+	/// </summary>
+	private (Action<long, int, VKeys, KeyboardState> action, bool intercept) _allKeyDownAction = (null, false);
+
+	/// <summary>
+	/// 所有按键弹起都会触发的事件
+	/// </summary>
+	private (Action<long, int, VKeys, KeyboardState> action, bool intercept) _allKeyUpAction = (null, false);
+
+	/// <summary>
+	/// 设定所有按键按下都会触发的事件
+	/// </summary>
+	/// <param name="action">所触发的动作</param>
+	/// <param name="intercept">是否截断信号</param>
+	public void SetAllKeyDownBinding(Action<long, int, VKeys, KeyboardState> action, bool intercept = false)
+	{
+		_allKeyDownAction = (action, intercept);
+	}
+
+	/// <summary>
+	/// 设定所有按键弹起都会触发的事件
+	/// </summary>
+	/// <param name="action">所触发的动作</param>
+	/// <param name="intercept">是否截断信号</param>
+	public void SetAllKeyUpBinding(Action<long, int, VKeys, KeyboardState> action, bool intercept = false)
+	{
+		_allKeyUpAction = (action, intercept);
+	}
+
+	/// <summary>
+	/// 用于储存按下单个按键绑定的动作字典
+	/// </summary>
 	private Dictionary<KeyBinging, (Action<long, int> action, bool intercept)> _keyDownActions = new();
 
+	/// <summary>
+	/// 用于储存弹起单个按键绑定的动作字典
+	/// </summary>
 	private Dictionary<KeyBinging, (Action<long, int> action, bool intercept)> _keyUpActions = new();
 
+	/// <summary>
+	/// 设定按键按下的绑定
+	/// </summary>
+	/// <param name="key">按键</param>
+	/// <param name="action">触发的动作</param>
+	/// <param name="intercept">是否截断信号</param>
+	/// <param name="ctrlState">是否按下Ctrl</param>
+	/// <param name="shiftState">是否按下Shift</param>
+	/// <param name="altState">是否按下Alt</param>
+	/// <param name="capsLock">是否开启大写锁定</param>
 	public void SetKeyDownBinding(VKeys key, Action<long, int> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
 		_keyDownActions[new KeyBinging(key, new KeyboardState(ctrlState, shiftState, altState, capsLock))] = (action, intercept);
 	}
 
+	/// <summary>
+	/// 设定按键弹起的绑定
+	/// </summary>
+	/// <param name="key">按键</param>
+	/// <param name="action">触发的动作</param>
+	/// <param name="intercept">是否截断信号</param>
+	/// <param name="ctrlState">是否按下Ctrl</param>
+	/// <param name="shiftState">是否按下Shift</param>
+	/// <param name="altState">是否按下Alt</param>
+	/// <param name="capsLock">是否开启大写锁定</param>
 	public void SetKeyUpBinding(VKeys key, Action<long, int> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
 		_keyUpActions[new KeyBinging(key, new KeyboardState(ctrlState, shiftState, altState, capsLock))] = (action, intercept);
@@ -123,6 +165,12 @@ public class KeyboardHook : IDisposable
 					intercept = action.intercept;
 				}
 
+				if (_allKeyDownAction is (not null, _) allDownAction)
+				{
+					allDownAction.action.Invoke(lParam.Time, lParam.Flags, (VKeys)(lParam.KeyCode), state);
+					intercept = intercept || allDownAction.intercept;
+				}
+
 				break;
 			}
 			case (IntPtr)WMKeys.WM_KEYUP or (IntPtr)WMKeys.WM_SYSKEYUP:
@@ -131,6 +179,12 @@ public class KeyboardHook : IDisposable
 				{
 					action.action.Invoke(lParam.Time, lParam.Flags);
 					intercept = action.intercept;
+				}
+
+				if (_allKeyUpAction is (not null, _) allUpAction)
+				{
+					allUpAction.action.Invoke(lParam.Time, lParam.Flags, (VKeys)(lParam.KeyCode), state);
+					intercept = intercept || allUpAction.intercept;
 				}
 
 				break;

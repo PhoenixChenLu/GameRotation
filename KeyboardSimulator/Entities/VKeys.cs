@@ -1,4 +1,4 @@
-﻿namespace KeyboardHook;
+﻿namespace KeyboardSimulator.Entities;
 
 /// <summary>
 /// VKey Enums

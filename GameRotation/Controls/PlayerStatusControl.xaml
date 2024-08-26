@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="GameRotation.Controls.PlayerStatusControl"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			xmlns:local="clr-namespace:GameRotation.Controls"
+			mc:Ignorable="d"
+			DataContext="{Binding RelativeSource={RelativeSource Self}}"
+			d:DesignHeight="Auto" d:DesignWidth="400">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+			<RowDefinition Height="Auto"></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<TextBlock Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">玩家状态信息</TextBlock>
+		<TextBlock Grid.Row="1" Grid.ColumnSpan="2">
+			<Run>当前时间：</Run>
+			<Run Text="{Binding CurrentTime}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+			<Run>毫秒数：</Run>
+			<Run Text="{Binding CurrentMillisecond}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="2" Grid.Column="0" Text="存活">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerAliveColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="2" Grid.Column="1" Text="战斗中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerInCombatColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="2" Grid.Column="2" Text="坐骑上">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerMountedColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="2" Grid.Column="3" Text="载具中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerInVehicleColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="3" Grid.Column="0" Text="跳跃中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerJumpingColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="3" Grid.Column="1" Text="移动中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerMovingColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="3" Grid.Column="2" Text="施法中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerIsCastingColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="3" Grid.Column="3" Text="引导中">
+			<TextBlock.Foreground>
+				<SolidColorBrush Color="{Binding PlayerIsChannelingColor}"></SolidColorBrush>
+			</TextBlock.Foreground>
+		</TextBlock>
+		<TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+			<Run>当前生命值：</Run>
+			<Run Text="{Binding PlayerCurrentHealth}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+			<Run>最大生命值：</Run>
+			<Run Text="{Binding PlayerMaxHealth}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+			<Run>当前能量值：</Run>
+			<Run Text="{Binding PlayerCurrentPower}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+			<Run>最大能量值：</Run>
+			<Run Text="{Binding PlayerMaxPower}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="6" Grid.ColumnSpan="4">
+			<Run>公共冷却时间剩余：</Run>
+			<Run Text="{Binding PlayerGlobalCooldown}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2">
+			<Run>施法/引导结束：</Run>
+			<Run Text="{Binding PlayerCastEndTime}"></Run>
+		</TextBlock>
+		<TextBlock Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2">
+			<Run>施法/引导剩余：</Run>
+			<Run Text="{Binding PlayerCastRemainingTime}"></Run>
+		</TextBlock>
+	</Grid>
+</UserControl>

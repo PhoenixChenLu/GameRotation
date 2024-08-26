@@ -8,4 +8,28 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KeyboardHook\KeyboardHook.csproj" />
+    <ProjectReference Include="..\ScreenReader\ScreenReader.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\ScreenReadControl_Data.cs">
+      <DependentUpon>ScreenReadControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ScreenReadControl_Function.cs">
+      <DependentUpon>ScreenReadControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\PlayerStatusControl_Data.cs">
+      <DependentUpon>PlayerStatusControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\PlayerStatusControl_DataUpdate.cs">
+      <DependentUpon>PlayerStatusControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.6.1" />
+  </ItemGroup>
+
 </Project>

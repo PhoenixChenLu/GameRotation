@@ -1,12 +1,32 @@
 ﻿<Window x:Class="GameRotation.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GameRotation"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="clr-namespace:GameRotation.Controls"
+		xmlns:local="clr-namespace:GameRotation"
+		mc:Ignorable="d"
+		DataContext="{Binding RelativeSource={RelativeSource Self}}"
+		Title="MainWindow" Height="700" Width="700">
+	<TabControl>
+		<TabItem Header="屏幕">
+			<controls:ScreenReadControl></controls:ScreenReadControl>
+		</TabItem>
+		<TabItem Header="按键">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
+				</Grid.RowDefinitions>
+				<ListView>
+					<TextBlock Text="{Binding Path =Message, Mode=TwoWay}"></TextBlock>
+					<TextBlock Text="{Binding Path =KeyUp, Mode=TwoWay}"></TextBlock>
+					<TextBlock Text="{Binding Path =KeyDown, Mode=TwoWay}"></TextBlock>
+					<TextBlock Text="{Binding Path =SysKeyUp, Mode=TwoWay}"></TextBlock>
+					<TextBlock Text="{Binding Path =SysKeyDown, Mode=TwoWay}"></TextBlock>
+				</ListView>
+				<Button Grid.Row="1">按下按键</Button>
+			</Grid>
+		</TabItem>
+	</TabControl>
 </Window>

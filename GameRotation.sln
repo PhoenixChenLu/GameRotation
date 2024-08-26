@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRotation", "GameRotatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardHook", "KeyboardHook\KeyboardHook.csproj", "{98AB30AD-3308-437B-9D1D-E102D1061D34}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputSimulator", "InputSimulator\InputSimulator.csproj", "{6EE9AB34-D371-4F27-81BF-8C529885B0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardSimulator", "KeyboardSimulator\KeyboardSimulator.csproj", "{72F1D7D4-EFFB-4972-8FEA-527779EC3B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenReader", "ScreenReader\ScreenReader.csproj", "{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98AB30AD-3308-437B-9D1D-E102D1061D34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EE9AB34-D371-4F27-81BF-8C529885B0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE9AB34-D371-4F27-81BF-8C529885B0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE9AB34-D371-4F27-81BF-8C529885B0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE9AB34-D371-4F27-81BF-8C529885B0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72F1D7D4-EFFB-4972-8FEA-527779EC3B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72F1D7D4-EFFB-4972-8FEA-527779EC3B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72F1D7D4-EFFB-4972-8FEA-527779EC3B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72F1D7D4-EFFB-4972-8FEA-527779EC3B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

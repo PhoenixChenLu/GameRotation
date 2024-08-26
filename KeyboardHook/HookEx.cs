@@ -60,4 +60,32 @@ public static class HookEx
 	/// <returns>高位为1表示按键按下，否则为0；低位为1则表示按键激活（如CapsLock打开）</returns>
 	[DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]
 	public static extern short GetKeyState(int keyCode);
+	
+	/// <summary>
+	/// 获取窗口句柄
+	/// </summary>
+	/// <param name="lpClassName">获取的窗口类名称，可以为空</param>
+	/// <param name="lpWindowName">要获取的窗口名称，如果为空则所有窗口都会被适配</param>
+	/// <returns>如果成功返回窗口句柄，否则返回IntPtr.Zero</returns>
+	[DllImport("user32.dll")]
+	public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+	/// <summary>
+	/// 向指定窗口发熊消息
+	/// </summary>
+	/// <param name="hWnd">指定窗口的句柄，如果为0Xffff则发送给所有窗口，如果为Null则发送到当前进程</param>
+	/// <param name="Msg">发送的信息类型，详见https://learn.microsoft.com/en-us/windows/win32/winmsg/about-messages-and-message-queues</param>
+	/// <param name="wParam">与信息类型相关的参数</param>
+	/// <param name="lParam">与信息类型相关的参数</param>
+	/// <returns></returns>
+	[DllImport("user32.dll")]
+	public static extern IntPtr PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+	
+	/// <summary>
+	/// 将指定窗口设置为前台窗口
+	/// </summary>
+	/// <param name="hWnd">指定窗口的句柄</param>
+	/// <returns>如果成功返回true，否则返回false</returns>
+	[DllImport("USER32.DLL")]
+	public static extern bool SetForegroundWindow(IntPtr hWnd);
 }
