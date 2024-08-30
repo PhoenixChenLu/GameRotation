@@ -557,9 +557,9 @@ function aura_env:updateNameplateDataToTexture(index)
         aura_env:setNameplateTextureNotExists(index)
         return
     end
-    local status1 = aura_env:boolToByte(unitInfo.isDead, unitInfo.canAttack, unitInfo.isInCombat, unitInfo.isThreat, unitInfo.isCasting, unitInfo.canInterruptCast, unitInfo.isChanneling, unitInfo.canInterruptChannel)
-    local status2 = aura_env:boolToByte(unitInfo.isInterruptible, unitInfo.inMeleeRange, unitInfo.in6YardRange, unitInfo.in8YardRange, unitInfo.in10YardRange, unitInfo.in15YardRange, unitInfo.in20YardRange, unitInfo.in25YardRange)
-    local status3 = aura_env:boolToByte(unitInfo.in30YardRange, unitInfo.in35YardRange, unitInfo.in40YardRange, unitInfo.in70YardRange, unitInfo.in80YardRange, unitInfo.in100YardRange, false, false)
+    local status1 = aura_env:boolToByte(true, unitInfo.isDead, unitInfo.canAttack, unitInfo.isInCombat, unitInfo.isThreat, unitInfo.isCasting, unitInfo.canInterruptCast, unitInfo.isChanneling)
+    local status2 = aura_env:boolToByte(unitInfo.canInterruptChannel, unitInfo.isInterruptible, unitInfo.inMeleeRange, unitInfo.in6YardRange, unitInfo.in8YardRange, unitInfo.in10YardRange, unitInfo.in15YardRange, unitInfo.in20YardRange)
+    local status3 = aura_env:boolToByte(unitInfo.in25YardRange, unitInfo.in30YardRange, unitInfo.in35YardRange, unitInfo.in40YardRange, unitInfo.in70YardRange, unitInfo.in80YardRange, unitInfo.in100YardRange, false)
 
     local textureNames = aura_env:getNameplateTextureNames(index)
     aura_env:setTextureColor(textureNames.statusName, status1, status2, status3)

@@ -2,6 +2,7 @@ using System.Drawing;
 using System.Windows;
 using GameRotation.Entities;
 using ScreenReader;
+using ScreenReader.Player;
 
 namespace GameRotation.Controls;
 

@@ -40,4 +40,10 @@ public class UnitType
 		FriendlyType = FriendlyEnum.Hostile,
 		PlayerType = PlayerEnum.NPC,
 	};
+	
+	public static UnitType Empty = new UnitType()
+	{
+		FriendlyType = FriendlyEnum.DoesNotMatter,
+		PlayerType = PlayerEnum.DoesNotMatter,
+	};
 }

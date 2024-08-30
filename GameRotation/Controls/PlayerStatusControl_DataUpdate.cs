@@ -1,5 +1,6 @@
 using System.Windows.Media;
 using ScreenReader;
+using ScreenReader.Player;
 
 namespace GameRotation.Controls;
 

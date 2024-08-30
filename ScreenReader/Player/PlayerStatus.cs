@@ -1,4 +1,4 @@
-﻿namespace ScreenReader;
+﻿namespace ScreenReader.Player;
 
 public class PlayerStatus
 {

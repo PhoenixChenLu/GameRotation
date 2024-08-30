@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace ScreenReader;
+namespace ScreenReader.Player;
 
 public static class PlayerStatusRead
 {

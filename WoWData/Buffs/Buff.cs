@@ -1,13 +1,16 @@
-﻿using WoWData.Entities;
+﻿using System.Drawing;
+using WoWData.Entities;
 
 namespace WoWData.Buffs;
 
 public class Buff
 {
+	public bool Exists { get; set; }
+
 	public UnitType FromType { get; init; }
-	
+
 	public UnitType ToType { get; init; }
-	
+
 	public int Id { get; init; }
 
 	public bool Stackable { get; set; } = false;
@@ -28,4 +31,44 @@ public class Buff
 	{
 		EndDateTime = endTime;
 	}
+
+	public void UpdateFromColorAndCurrentTime(Color color, DateTime currentTime)
+	{
+		byte r = color.R;
+		byte g = color.G;
+		byte b = color.B;
+
+		if (r < 128)
+		{
+			Exists = false;
+			return;
+		}
+
+		r -= 128;
+		Exists = true;
+		if (Stackable)
+		{
+			CurrentStack = r;
+			uint ticksToExpire = (uint)(g << 8 | b);
+			EndDateTime = currentTime + TimeSpan.FromMilliseconds(ticksToExpire);
+		}
+		else
+		{
+			CurrentStack = 0;
+			uint ticksToExpire = (uint)(r << 16 | g << 8 | b);
+			EndDateTime = currentTime + TimeSpan.FromMilliseconds(ticksToExpire);
+		}
+	}
+
+	private static Buff EmptyBuff => new Buff()
+	{
+		FromType = UnitType.Empty,
+		ToType = UnitType.Empty,
+		Id = 0,
+		Name = "Empty",
+		ChineseName = "空",
+		Description = "空",
+		CurrentStack = 0,
+		EndDateTime = DateTime.MinValue
+	};
 }
