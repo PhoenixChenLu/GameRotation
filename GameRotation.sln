@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardSimulator", "Keyboa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenReader", "ScreenReader\ScreenReader.csproj", "{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoWData", "WoWData\WoWData.csproj", "{860AFB90-E2DA-4E2F-A2C1-D1D0E732F4DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D3F1004-9A42-4B42-9DCC-BBFC5F199649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860AFB90-E2DA-4E2F-A2C1-D1D0E732F4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860AFB90-E2DA-4E2F-A2C1-D1D0E732F4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860AFB90-E2DA-4E2F-A2C1-D1D0E732F4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860AFB90-E2DA-4E2F-A2C1-D1D0E732F4DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
