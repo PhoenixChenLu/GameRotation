@@ -10,6 +10,15 @@
       <Compile Update="Buffs\PlayerSelfBuffs_Mage_Arcane.cs">
         <DependentUpon>PlayerSelfBuffs.cs</DependentUpon>
       </Compile>
+      <Compile Update="Buffs\PlayerEnemyBuffs_Mage_Arcane.cs">
+        <DependentUpon>PlayerEnemyBuffs.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\FriendlyEnum.cs">
+        <DependentUpon>UnitType.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Entities\PlayerEnum.cs">
+        <DependentUpon>UnitType.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

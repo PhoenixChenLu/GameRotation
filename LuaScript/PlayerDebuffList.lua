@@ -35,13 +35,16 @@ function aura_env:initializeRogueDebuffs()
 end
 
 function aura_env:initializeMageDebuffs()
-    aura_env.playerDebuffList.Mage.Arcane = { [118] = "变形术",
-                                              [122] = "冰霜新星",
-                                              [212792] = "冰锥术",
-                                              [449700] = "引力失效",
-                                              [210824] = "大法师之触",
-                                              [453912] = "大法师的火花",
-                                              [453599] = "奥术衰竭",
+    aura_env.playerDebuffList.Mage.Arcane = {
+        ["keys"] = { 118, 122, 212792, 449700, 210824, 453912, 453599 },
+        ["watchKeys"] = { 449700, 210824, 453912, 453599 },
+        [118] = "变形术",
+        [122] = "冰霜新星",
+        [212792] = "冰锥术",
+        [449700] = "引力失效",
+        [210824] = "大法师之触",
+        [453912] = "大法师的火花",
+        [453599] = "奥术衰竭",
     }
 end
 

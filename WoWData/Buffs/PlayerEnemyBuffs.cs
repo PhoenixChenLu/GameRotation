@@ -1,6 +1,6 @@
 ﻿namespace WoWData.Buffs;
 
-public class PlayerEnemyBuffs
+public static partial class PlayerEnemyBuffs
 {
 	
 }
