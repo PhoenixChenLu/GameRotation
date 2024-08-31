@@ -25,6 +25,8 @@ public class Buff
 
 	public string Description { get; init; }
 
+	public uint RemainingTime { get; set; }
+
 	public DateTime EndDateTime { get; set; }
 
 	public void SetEndTime(DateTime endTime)
@@ -41,6 +43,8 @@ public class Buff
 		if (r < 128)
 		{
 			Exists = false;
+			RemainingTime = 0;
+			EndDateTime = DateTime.MinValue;
 			return;
 		}
 
@@ -50,17 +54,19 @@ public class Buff
 		{
 			CurrentStack = r;
 			uint ticksToExpire = (uint)(g << 8 | b);
+			RemainingTime = ticksToExpire;
 			EndDateTime = currentTime + TimeSpan.FromMilliseconds(ticksToExpire);
 		}
 		else
 		{
 			CurrentStack = 0;
 			uint ticksToExpire = (uint)(r << 16 | g << 8 | b);
+			RemainingTime = ticksToExpire;
 			EndDateTime = currentTime + TimeSpan.FromMilliseconds(ticksToExpire);
 		}
 	}
 
-	private static Buff EmptyBuff => new Buff()
+	public static Buff EmptyBuff => new Buff()
 	{
 		FromType = UnitType.Empty,
 		ToType = UnitType.Empty,

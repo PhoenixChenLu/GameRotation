@@ -26,6 +26,24 @@
     <Compile Update="Controls\PlayerStatusControl_DataUpdate.cs">
       <DependentUpon>PlayerStatusControl.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Controls\PlayerStatusControl_ImageSource.cs">
+      <DependentUpon>PlayerStatusControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ScreenReadControl_StatusRead.cs">
+      <DependentUpon>ScreenReadControl_Function.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Icon_Data.cs">
+      <DependentUpon>Icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Icon_Update.cs">
+      <DependentUpon>Icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\NamePlateControl_Data.cs">
+      <DependentUpon>NamePlateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\NamePlateControl_Function.cs">
+      <DependentUpon>NamePlateControl.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

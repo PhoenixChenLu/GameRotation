@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using WoWData.Entities;
 
 namespace ScreenReader.Player;
 
@@ -38,8 +39,9 @@ public static class PlayerStatusRead
 		uint playerPower = Functions.ColorToUint(colors[7], colors[8]);
 		uint playerMaxPower = Functions.ColorToUint(colors[9], colors[10]);
 		uint playerRemainingGCD = Functions.ColorToUint(colors[11]);
-		uint playerRemainingCastTime = Functions.ColorToUint(colors[12], colors[13]);
-		uint playerRemainingChannelTime = Functions.ColorToUint(colors[14], colors[15]);
+		uint playerCastEndTick = Functions.ColorToUint(colors[12], colors[13]);
+		uint playerChannelEndTick = Functions.ColorToUint(colors[14], colors[15]);
+		Specializations specialization = SpecializationDict.GetSpecialization(colors[16].R, colors[16].G);
 
 		return new PlayerStatus
 		{
@@ -57,8 +59,9 @@ public static class PlayerStatusRead
 			PlayerPower = playerPower,
 			PlayerMaxPower = playerMaxPower,
 			PlayerRemainingGlobalCooldownTicks = playerRemainingGCD,
-			PlayerRemainingCastTicks = playerRemainingCastTime,
-			PlayerRemainingChannelTicks = playerRemainingChannelTime
+			PlayerCastEndTick = playerCastEndTick,
+			PlayerChannelEndTick = playerChannelEndTick,
+			Specialization = specialization,
 		};
 	}
 }

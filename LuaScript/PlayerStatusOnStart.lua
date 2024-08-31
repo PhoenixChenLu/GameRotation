@@ -231,6 +231,11 @@ function aura_env:readPlayerGCD()
     end
 end
 
+function aura_env:readPlayerClassAndSpec()
+    aura_env.playerClassId = select(3, UnitClass("player"))
+    aura_env.playerSpecId = GetSpecialization()
+end
+
 --- 读取所有玩家数据
 ---@return void
 function aura_env:readAllPlayerData()
@@ -246,6 +251,7 @@ function aura_env:readAllPlayerData()
     aura_env:readPlayerHealth()
     aura_env:readPlayerPower()
     aura_env:readPlayerGCD()
+    aura_env:readPlayerClassAndSpec()
 end
 
 --- 获取玩家状态1
@@ -357,6 +363,12 @@ function aura_env:updatePlayerChannelEndTimeToTexture()
     aura_env:setTextureColor("玩家引导结束时间低位", byte4, byte5, byte6)
 end
 
+--- 更新玩家职业专精到材质
+---@return void
+function aura_env:updatePlayerClassAndSpecToTexture()
+    aura_env:setTextureColor("玩家职业专精", aura_env.playerClassId, aura_env.playerSpecId, 0)
+end
+
 --- 更新所有玩家数据到材质
 ---@return void
 function aura_env:updateAllPlayerDataToTexture()
@@ -367,6 +379,7 @@ function aura_env:updateAllPlayerDataToTexture()
     aura_env:updatePlayerGCDToTexture()
     aura_env:updatePlayerCastEndTimeToTexture()
     aura_env:updatePlayerChannelEndTimeToTexture()
+    aura_env:updatePlayerClassAndSpecToTexture()
 end
 
 --- 获取单位所有的玩家造成的debuff

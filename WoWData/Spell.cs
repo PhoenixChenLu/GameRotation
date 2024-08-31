@@ -25,6 +25,4 @@ public class Spell
 	public uint PowerGenerate2 { get; set; }
 	
 	public PowerType PowerGenerate2Type { get; set; }
-	
-	public 
 }

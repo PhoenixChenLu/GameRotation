@@ -1,4 +1,6 @@
-﻿namespace ScreenReader.Player;
+﻿using WoWData.Entities;
+
+namespace ScreenReader.Player;
 
 public class PlayerStatus
 {
@@ -26,19 +28,29 @@ public class PlayerStatus
 
 	public uint PlayerMaxHealth { get; set; }
 
+	public double PlayerHealthPercentage => (double)PlayerHealth / (double)PlayerMaxHealth;
+
 	public uint PlayerPower { get; set; }
 
 	public uint PlayerMaxPower { get; set; }
+
+	public double PlayerPowerPercentage => (double)PlayerPower / (double)PlayerMaxPower;
 
 	public uint PlayerRemainingGlobalCooldownTicks { get; set; }
 
 	public TimeSpan PlayerRemainingGlobalCooldown => TimeSpan.FromMilliseconds(PlayerRemainingGlobalCooldownTicks);
 
-	public uint PlayerRemainingCastTicks { get; set; }
+	public uint PlayerCastEndTick { get; set; }
 
-	public DateTime PlayerCastEndTime => Functions.SystemStartTime + TimeSpan.FromMilliseconds(PlayerRemainingCastTicks);
+	public uint PlayerRemainingCastTick => PlayerCastEndTick > CurrentTick ? PlayerCastEndTick - CurrentTick : 0;
 
-	public uint PlayerRemainingChannelTicks { get; set; }
+	public DateTime PlayerCastEndTime => Functions.SystemStartTime + TimeSpan.FromMilliseconds(PlayerCastEndTick);
 
-	public DateTime PlayerChannelEndTime => Functions.SystemStartTime + TimeSpan.FromMilliseconds(PlayerRemainingChannelTicks);
+	public uint PlayerChannelEndTick { get; set; }
+
+	public uint PlayerRemainingChannelTick => PlayerChannelEndTick > CurrentTick ? PlayerChannelEndTick - CurrentTick : 0;
+
+	public DateTime PlayerChannelEndTime => Functions.SystemStartTime + TimeSpan.FromMilliseconds(PlayerChannelEndTick);
+
+	public Specializations Specialization { get; set; }
 }

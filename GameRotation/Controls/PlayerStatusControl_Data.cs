@@ -24,138 +24,126 @@ public partial class PlayerStatusControl
 
 	#endregion
 
-	#region 玩家状态
-
-	private Color _playerAliveColor = Colors.Red;
-
-	public Color PlayerAliveColor
-	{
-		get => _playerAliveColor;
-		set => SetField(ref _playerAliveColor, value);
-	}
-
-	private Color _playerInCombatColor = Colors.Red;
-
-	public Color PlayerInCombatColor
-	{
-		get => _playerInCombatColor;
-		set => SetField(ref _playerInCombatColor, value);
-	}
-
-	private Color _playerMountedColor = Colors.Red;
-
-	public Color PlayerMountedColor
-	{
-		get => _playerMountedColor;
-		set => SetField(ref _playerMountedColor, value);
-	}
-
-	private Color _playerInVehicleColor = Colors.Red;
-
-	public Color PlayerInVehicleColor
-	{
-		get => _playerInVehicleColor;
-		set => SetField(ref _playerInVehicleColor, value);
-	}
-
-	private Color _playerJumpingColor = Colors.Red;
-
-	public Color PlayerJumpingColor
-	{
-		get => _playerJumpingColor;
-		set => SetField(ref _playerJumpingColor, value);
-	}
-
-	private Color _playerMovingColor = Colors.Red;
-
-	public Color PlayerMovingColor
-	{
-		get => _playerMovingColor;
-		set => SetField(ref _playerMovingColor, value);
-	}
-
-	private Color _playerIsCastingColor = Colors.Red;
-
-	public Color PlayerIsCastingColor
-	{
-		get => _playerIsCastingColor;
-		set => SetField(ref _playerIsCastingColor, value);
-	}
-
-	private Color _playerIsChannelingColor = Colors.Red;
-
-	public Color PlayerIsChannelingColor
-	{
-		get => _playerIsChannelingColor;
-		set => SetField(ref _playerIsChannelingColor, value);
-	}
-
-	#endregion
-
 	#region 生命值和法力值
 
-	private string _playerCurrentHealth = "0";
+	private uint _playerCurrentHealthValue;
 
-	public string PlayerCurrentHealth
+	public uint PlayerCurrentHealthValue
 	{
-		get => _playerCurrentHealth;
-		set => SetField(ref _playerCurrentHealth, value);
+		get => _playerCurrentHealthValue;
+		set => SetField(ref _playerCurrentHealthValue, value);
 	}
 
-	private string _playerMaxHealth = "0";
+	private uint _playerMaxHealthValue;
 
-	public string PlayerMaxHealth
+	public uint PlayerMaxHealthValue
 	{
-		get => _playerMaxHealth;
-		set => SetField(ref _playerMaxHealth, value);
+		get => _playerMaxHealthValue;
+		set => SetField(ref _playerMaxHealthValue, value);
 	}
 
-	private string _playerCurrentPower = "0";
+	private uint _playerCurrentPowerValue;
 
-	public string PlayerCurrentPower
+	public uint PlayerCurrentPowerValue
 	{
-		get => _playerCurrentPower;
-		set => SetField(ref _playerCurrentPower, value);
+		get => _playerCurrentPowerValue;
+		set => SetField(ref _playerCurrentPowerValue, value);
 	}
 
-	private string _playerMaxPower = "0";
+	private uint _playerMaxPowerValue;
 
-	public string PlayerMaxPower
+	public uint PlayerMaxPowerValue
 	{
-		get => _playerMaxPower;
-		set => SetField(ref _playerMaxPower, value);
+		get => _playerMaxPowerValue;
+		set => SetField(ref _playerMaxPowerValue, value);
+	}
+
+	private string _playerHealthInfoString = "0/0";
+
+	public string PlayerHealthInfoString
+	{
+		get => _playerHealthInfoString;
+		set => SetField(ref _playerHealthInfoString, value);
+	}
+
+	private string _playerHealthPercentageString = "0%";
+
+	public string PlayerHealthPercentageString
+	{
+		get => _playerHealthPercentageString;
+		set => SetField(ref _playerHealthPercentageString, value);
+	}
+
+	private string _playerPowerInfoString = "0/0";
+
+	public string PlayerPowerInfoString
+	{
+		get => _playerPowerInfoString;
+		set => SetField(ref _playerPowerInfoString, value);
+	}
+
+	private string _playerPowerPercentageString = "0%";
+
+	public string PlayerPowerPercentageString
+	{
+		get => _playerPowerPercentageString;
+		set => SetField(ref _playerPowerPercentageString, value);
 	}
 
 	#endregion
 
 	#region 公共冷却
 
-	private string _playerGlobalCooldown = "0";
+	private string _playerGlobalCooldownImageSource;
 
-	public string PlayerGlobalCooldown
+	public string PlayerGlobalCooldownImageSource
 	{
-		get => _playerGlobalCooldown;
-		set => SetField(ref _playerGlobalCooldown, value);
+		get => _playerGlobalCooldownImageSource;
+		set => SetField(ref _playerGlobalCooldownImageSource, value);
+	}
+
+	public string _playerGlobalCooldownTimerText;
+
+	public string PlayerGlobalCooldownTimerText
+	{
+		get => _playerGlobalCooldownTimerText;
+		set => SetField(ref _playerGlobalCooldownTimerText, value);
 	}
 
 	#endregion
 
 	#region 施法和引导剩余时间
 
-	private string _playerCastEndTime = "0";
+	private string _playerIsCastingImageSource;
 
-	public string PlayerCastEndTime
+	public string PlayerIsCastingImageSource
 	{
-		get => _playerCastEndTime;
-		set => SetField(ref _playerCastEndTime, value);
+		get => _playerIsCastingImageSource;
+		set => SetField(ref _playerIsCastingImageSource, value);
 	}
 
-	private string _playerCastRemainingTime = "0";
+	private string _playerCastingTimerText;
 
-	public string PlayerCastRemainingTime
+	public string PlayerCastingTimerText
 	{
-		get => _playerCastRemainingTime;
-		set => SetField(ref _playerCastRemainingTime, value);
+		get => _playerCastingTimerText;
+		set => SetField(ref _playerCastingTimerText, value);
+	}
+
+	private string _playerIsChannelingImageSource;
+
+	public string PlayerIsChannelingImageSource
+	{
+		get => _playerIsChannelingImageSource;
+		set => SetField(ref _playerIsChannelingImageSource, value);
+	}
+
+	private string _playerChannelingTimerText;
+
+	public string PlayerChannelingTimerText
+	{
+		get => _playerChannelingTimerText;
+		set => SetField(ref _playerChannelingTimerText, value);
 	}
 
 	#endregion

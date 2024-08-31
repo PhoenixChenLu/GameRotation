@@ -20,4 +20,13 @@
       <ProjectReference Include="..\WoWData\WoWData.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="AllInfo_PlayerStatus.cs">
+        <DependentUpon>AllInfo.cs</DependentUpon>
+      </Compile>
+      <Compile Update="AllInfo_NameplateStatus.cs">
+        <DependentUpon>AllInfo.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
 </Project>

@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace GameRotation.Controls;
 
@@ -9,6 +11,7 @@ public partial class PlayerStatusControl : UserControl, INotifyPropertyChanged
 	public PlayerStatusControl()
 	{
 		InitializeComponent();
+		InitializeImagePath();
 	}
 
 	public event PropertyChangedEventHandler? PropertyChanged;

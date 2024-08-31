@@ -1,17 +1,15 @@
 ﻿using System.ComponentModel;
-using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 
 namespace GameRotation.Controls;
 
-public partial class ScreenReadControl : UserControl, INotifyPropertyChanged
+public partial class Icon : UserControl, INotifyPropertyChanged
 {
-	public ScreenReadControl()
+	public Icon()
 	{
 		InitializeComponent();
-		InitializeReadEvents();
-		ScreenReadCompleted += ReadScreenInfo;
+		InitializeFontSize();
 	}
 
 	public event PropertyChangedEventHandler? PropertyChanged;
@@ -27,10 +25,5 @@ public partial class ScreenReadControl : UserControl, INotifyPropertyChanged
 		field = value;
 		OnPropertyChanged(propertyName);
 		return true;
-	}
-
-	private void ReadScreenInfo(Bitmap bmp)
-	{
-		ReadAllInfo(bmp);
 	}
 }

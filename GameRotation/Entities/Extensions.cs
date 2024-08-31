@@ -5,6 +5,8 @@ namespace GameRotation.Entities;
 
 public static class Extensions
 {
+	public static readonly string IconFolderPath = Directory.GetCurrentDirectory() + @"\Resource\Icons\";
+	
 	public static BitmapImage ToBitmapImage(this System.Drawing.Bitmap bitmap)
 	{         
 		MemoryStream ms = new MemoryStream();

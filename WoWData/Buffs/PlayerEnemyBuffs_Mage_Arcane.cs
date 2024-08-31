@@ -4,6 +4,16 @@ namespace WoWData.Buffs;
 
 public static partial class PlayerEnemyBuffs
 {
+	public static List<Buff> ArcaneMageEnemyDebuffList()
+	{
+		List<Buff> debuffList = new();
+		debuffList.Add(GravityLapse());
+		debuffList.Add(TouchOfTheMagi());
+		debuffList.Add(MagisSpark());
+		debuffList.Add(ArcaneDebilitation());
+		return debuffList;
+	}
+
 	public static Buff Polymorph()
 	{
 		return new Buff()
@@ -18,7 +28,7 @@ public static partial class PlayerEnemyBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff FrostNova()
 	{
 		return new Buff()
@@ -33,7 +43,7 @@ public static partial class PlayerEnemyBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff ConeOfCold()
 	{
 		return new Buff()
@@ -63,7 +73,7 @@ public static partial class PlayerEnemyBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff TouchOfTheMagi()
 	{
 		return new Buff()
@@ -78,7 +88,7 @@ public static partial class PlayerEnemyBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff MagisSpark()
 	{
 		return new Buff()
@@ -93,7 +103,7 @@ public static partial class PlayerEnemyBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff ArcaneDebilitation()
 	{
 		return new Buff()

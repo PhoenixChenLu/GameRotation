@@ -6,9 +6,6 @@ namespace GameRotation.Controls;
 
 public partial class PlayerStatusControl
 {
-	private static readonly Color PositiveColor = Colors.Green;
-	private static readonly Color NegativeColor = Colors.Red;
-
 	public void SetCurrentTime(uint currentTime)
 	{
 		DateTime currentDateTime = Functions.SystemStartTime + TimeSpan.FromMilliseconds(currentTime);
@@ -16,62 +13,51 @@ public partial class PlayerStatusControl
 		CurrentMillisecond = currentTime.ToString();
 	}
 
-	public void SetPlayerStatus(byte playerStatus)
-	{
-		bool[] playerStatusArray = Functions.ByteToBool(playerStatus);
-		bool playerAlive = playerStatusArray[0];
-		bool playerInCombat = playerStatusArray[1];
-		bool playerMounted = playerStatusArray[2];
-		bool playerInVehicle = playerStatusArray[3];
-		bool playerJumping = playerStatusArray[4];
-		bool playerMoving = playerStatusArray[5];
-		bool playerCasting = playerStatusArray[6];
-		bool playerChanneling = playerStatusArray[7];
-		PlayerAliveColor = playerAlive ? PositiveColor : NegativeColor;
-		PlayerInCombatColor = playerInCombat ? PositiveColor : NegativeColor;
-		PlayerMountedColor = playerMounted ? PositiveColor : NegativeColor;
-		PlayerInVehicleColor = playerInVehicle ? PositiveColor : NegativeColor;
-		PlayerJumpingColor = playerJumping ? PositiveColor : NegativeColor;
-		PlayerMovingColor = playerMoving ? PositiveColor : NegativeColor;
-		PlayerIsCastingColor = playerCasting ? PositiveColor : NegativeColor;
-		PlayerIsChannelingColor = playerChanneling ? PositiveColor : NegativeColor;
-	}
-
 	public void SetPlayerStatus(bool playerAlive, bool playerInCombat, bool playerMounted, bool playerInVehicle, bool playerJumping, bool playerMoving, bool playerCasting, bool playerChanneling)
 	{
-		PlayerAliveColor = playerAlive ? PositiveColor : NegativeColor;
-		PlayerInCombatColor = playerInCombat ? PositiveColor : NegativeColor;
-		PlayerMountedColor = playerMounted ? PositiveColor : NegativeColor;
-		PlayerInVehicleColor = playerInVehicle ? PositiveColor : NegativeColor;
-		PlayerJumpingColor = playerJumping ? PositiveColor : NegativeColor;
-		PlayerMovingColor = playerMoving ? PositiveColor : NegativeColor;
-		PlayerIsCastingColor = playerCasting ? PositiveColor : NegativeColor;
-		PlayerIsChannelingColor = playerChanneling ? PositiveColor : NegativeColor;
+		AliveIcon.DispatchSwitchLight(playerAlive);
+		InCombatIcon.DispatchSwitchLight(playerInCombat);
+		MountedIcon.DispatchSwitchLight(playerMounted);
+		InVehicleIcon.DispatchSwitchLight(playerInVehicle);
+		JumpingIcon.DispatchSwitchLight(playerJumping);
+		MovingIcon.DispatchSwitchLight(playerMoving);
+		CastingIcon.DispatchSwitchLight(playerCasting);
+		ChannelingIcon.DispatchSwitchLight(playerChanneling);
 	}
 
 	public void SetPlayerHealth(uint currentHealth, uint maxHealth)
 	{
-		PlayerCurrentHealth = currentHealth.ToString();
-		PlayerMaxHealth = maxHealth.ToString();
+		PlayerHealthInfoString = $"{currentHealth}/{maxHealth}";
+		PlayerHealthPercentageString = $"{(double)currentHealth / (double)maxHealth:P}";
+		PlayerCurrentHealthValue = currentHealth;
+		PlayerMaxHealthValue = maxHealth;
 	}
 
 	public void SetPlayerPower(uint currentPower, uint maxPower)
 	{
-		PlayerCurrentPower = currentPower.ToString();
-		PlayerMaxPower = maxPower.ToString();
+		PlayerPowerInfoString = $"{currentPower}/{maxPower}";
+		PlayerPowerPercentageString = $"{(double)currentPower / (double)maxPower:P}";
+		PlayerCurrentPowerValue = currentPower;
+		PlayerMaxPowerValue = maxPower;
 	}
 
 	public void SetPlayerGlobalCooldown(uint globalCooldown)
 	{
-		PlayerGlobalCooldown = TimeSpan.FromMilliseconds(globalCooldown).ToString(@"ss\.fff");
+		GlobalCooldownIcon.DispatchSwitchLight(globalCooldown > 0);
+		GlobalCooldownIcon.DispatchSetCoolDown(globalCooldown);
 	}
 
-	public void SetPlayerCastTime(uint castTime)
+
+	public void SetPlayerCastTime(PlayerStatus status)
 	{
-		DateTime castEndTime = Functions.SystemStartTime + TimeSpan.FromMilliseconds(castTime);
-		TimeSpan castRemainingTime = castEndTime - DateTime.Now;
-		PlayerCastEndTime = castEndTime.ToString("HH:mm:ss.fff");
-		PlayerCastRemainingTime = castRemainingTime.ToString(@"ss\.fff");
+		CastingIcon.DispatchSwitchLight(status.PlayerCasting);
+		CastingIcon.DispatchSetCoolDown(status.PlayerCasting ? status.PlayerRemainingCastTick : 0);
+	}
+
+	public void SetPlayerChannelTime(PlayerStatus status)
+	{
+		ChannelingIcon.DispatchSwitchLight(status.PlayerChanneling);
+		ChannelingIcon.DispatchSetCoolDown(status.PlayerChanneling ? status.PlayerRemainingChannelTick : 0);
 	}
 
 	private void UpdateFromPlayerStatus(PlayerStatus playerStatus)
@@ -81,7 +67,8 @@ public partial class PlayerStatusControl
 		SetPlayerHealth(playerStatus.PlayerHealth, playerStatus.PlayerMaxHealth);
 		SetPlayerPower(playerStatus.PlayerPower, playerStatus.PlayerMaxPower);
 		SetPlayerGlobalCooldown(playerStatus.PlayerRemainingGlobalCooldownTicks);
-		SetPlayerCastTime(playerStatus.PlayerRemainingCastTicks);
+		SetPlayerCastTime(playerStatus);
+		SetPlayerChannelTime(playerStatus);
 	}
 
 	public void DispatcherUpdateFromPlayerStatus(PlayerStatus playerStatus)

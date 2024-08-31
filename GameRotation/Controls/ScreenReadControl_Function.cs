@@ -1,8 +1,6 @@
 using System.Drawing;
 using System.Windows;
-using GameRotation.Entities;
 using ScreenReader;
-using ScreenReader.Player;
 
 namespace GameRotation.Controls;
 
@@ -47,23 +45,5 @@ public partial class ScreenReadControl
 		ScreenContinuousRead = false;
 	}
 
-	public PlayerStatus? PlayerStatus { get; private set; }
 
-	public event Action<PlayerStatus> PlayerStatusChanged;
-
-	private void ReadDataFromBitmapAndDisplay(Bitmap bmp)
-	{
-		PlayerStatus newPlayerStatus = PlayerStatusRead.ReadPlayerStatus(bmp);
-		if (PlayerStatus?.CurrentTick != newPlayerStatus.CurrentTick)
-		{
-			PlayerStatus = newPlayerStatus;
-			PlayerStatusChanged?.Invoke(newPlayerStatus);
-		}
-		
-		this.Dispatcher.BeginInvoke(() =>
-		{
-			Screen = bmp;
-			ScreenSource = bmp.ToBitmapImage();
-		});
-	}
 }

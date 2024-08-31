@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="GameRotation.Controls.NamePlateControl"
+			xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			xmlns:local="clr-namespace:GameRotation.Controls"
+			mc:Ignorable="d"
+			d:DesignHeight="80" d:DesignWidth="220">
+	<StackPanel Orientation="Vertical">
+		<Grid>
+			<ProgressBar Height="20" x:Name="HealthBar"></ProgressBar>
+			<TextBlock x:Name="HealthText" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+		</Grid>
+		<Grid>
+			<ProgressBar Height="15" x:Name="DistanceBar" Maximum="13" Foreground="Brown" Background="LawnGreen"></ProgressBar>
+			<TextBlock x:Name="DistanceText" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+		</Grid>
+		<WrapPanel Orientation="Horizontal">
+			<local:Icon x:Name="ExistIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="AliveIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="CanAttackIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="InCombatIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="ThreatIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="CastingIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="ChannelingIcon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="CanInterruptIcon" Width="20" Height="20"></local:Icon>
+		</WrapPanel>
+		<WrapPanel Orientation="Horizontal">
+			<local:Icon x:Name="Debuff1Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff2Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff3Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff4Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff5Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff6Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff7Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff8Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff9Icon" Width="20" Height="20"></local:Icon>
+			<local:Icon x:Name="Debuff10Icon" Width="20" Height="20"></local:Icon>
+		</WrapPanel>
+
+	</StackPanel>
+</UserControl>
