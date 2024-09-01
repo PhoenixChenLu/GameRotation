@@ -19,6 +19,9 @@
       <Compile Update="Entities\PlayerEnum.cs">
         <DependentUpon>UnitType.cs</DependentUpon>
       </Compile>
+      <Compile Update="Spells\PlayerSpells_Mage.cs">
+        <DependentUpon>PlayerSpells.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>
