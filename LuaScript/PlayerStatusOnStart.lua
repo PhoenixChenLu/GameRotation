@@ -414,10 +414,10 @@ function aura_env:readNameplateData(index)
     unitInfo.canAttack = UnitCanAttack("player", unit)
     unitInfo.isInCombat = UnitAffectingCombat(unit)
     unitInfo.isThreat = UnitThreatSituation("player", unit)
-    local name, text, texture, startTime, endTime, isTradeSkill, castID, notInterruptible, spellID = UnitCastingInfo("player")
+    local name, text, texture, startTime, endTime, isTradeSkill, castID, notInterruptible, spellID = UnitCastingInfo(unit)
     unitInfo.isCasting = name ~= nil
     unitInfo.canInterruptCast = isCasting and not notInterruptible
-    name, text, texture, startTime, endTime, isTradeSkill, notInterruptible, spellID = UnitChannelInfo("player")
+    name, text, texture, startTime, endTime, isTradeSkill, notInterruptible, spellID = UnitChannelInfo(unit)
     unitInfo.isChanneling = name ~= nil
     unitInfo.canInterruptChannel = isChanneling and not notInterruptible
     unitInfo.isInterruptible = unitInfo.canInterruptCast or unitInfo.canInterruptChannel
