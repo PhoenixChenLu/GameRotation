@@ -44,6 +44,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Spellfire Spheres",
 			ChineseName = "法术火焰宝珠",
 			Description = "法术火焰宝珠正在积聚，满6层后会生成一个法术火焰宝珠",
+			Stackable = true,
 			CurrentStack = 0,
 			EndDateTime = DateTime.MinValue
 		};

@@ -1,11 +1,12 @@
 -- Desc: This script is used to get player status on start
 
 --- 初始化姓名板数据
-function aura_env:initializeNameplateData()
+function aura_env:initializeDataLists()
     aura_env.nameplateList = {}
+    aura_env.playerBuffDataList = {}
 end
 
-aura_env:initializeNameplateData()
+aura_env:initializeDataLists()
 
 --- 初始化敌对Debuff数据
 function aura_env:initializeEnemyDebuffData()
@@ -22,7 +23,34 @@ function aura_env:initializeEnemyDebuffData()
     }
 end
 
+function aura_env:initializePlayerBuffData()
+    aura_env.playerBuffList = {
+        ["keys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 461531, 263725, 383783, 384267, 365362, 448659, 451038 },
+        ["watchKeys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 263725, 383783, 384267, 365362, 451038 },
+        [1459] = "奥术智慧",
+        [210126] = "奥术魔宠",
+        [449400] = "法术火焰宝珠",
+        [448604] = "法术火焰宝珠",
+        [451049] = "力量的重担",
+        [384455] = "奥术祥和",
+        [116267] = "咒术洪流",
+        [449322] = "法力涌流",
+        [383997] = "奥术迅疾",
+        [458388] = "以太调谐",
+        [453601] = "以太调谐",
+        [451073] = "白炽耀焰",
+        [461531] = "清晰头脑",
+        [263725] = "节能施法",
+        [383783] = "虚空精准",
+        [384267] = "风暴虹吸",
+        [365362] = "奥术涌动",
+        [448659] = "奥术凤凰",
+        [451038] = "奥术之魂",
+    }
+end
+
 aura_env:initializeEnemyDebuffData()
+aura_env:initializePlayerBuffData()
 
 --- 将数字转换为字节
 ---@param num number 待转换的数字
@@ -491,6 +519,20 @@ function aura_env:readSpecialUnitData()
     aura_env.boss8Index = aura_env:getUnitNameplateIndex("boss8")
 end
 
+function aura_env:readPlayerBuffData()
+    for k, v in pairs(aura_env.playerBuffDataList) do
+        aura_env.playerBuffDataList[k] = nil
+    end
+    for i = 1, 40 do
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", i, "player")
+        if aura then
+            aura_env.playerBuffDataList[aura.spellId] = aura
+        else
+            break
+        end
+    end
+end
+
 --- 获取姓名板材质名称
 ---@param index number 索引
 ---@return table 姓名板材质名称
@@ -546,7 +588,8 @@ function aura_env:convertDebuffInfoToRGB(aura)
     else
         local expirationRemains = aura.expirationTime * 1000 - aura_env.currentMilliSeconds
 
-        if expirationRemains > 0x0000FFFF then
+        if expirationRemains > 0x00FFFFFF then
+            red = 255
             green = 255
             blue = 255
         else
@@ -591,6 +634,18 @@ function aura_env:updateNameplateDataToTexture(index)
         else
             aura_env:setTextureColor(textureNames["debuff" .. k .. "Name"], 0, 0, 0)
         end
+    end
+end
+
+function aura_env:updatePlayerBuffDataToTexture()
+    for k, v in pairs(aura_env.playerBuffList["watchKeys"]) do
+       local buff = aura_env.playerBuffDataList[v]
+         if buff then
+              local r, g, b = aura_env:convertDebuffInfoToRGB(buff)
+              aura_env:setTextureColor("玩家自身Buff" .. k, r, g, b)
+         else
+              aura_env:setTextureColor("玩家自身Buff" .. k, 0, 0, 0)
+         end
     end
 end
 
