@@ -305,4 +305,49 @@ public static partial class PlayerSelfBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
+
+	public static Buff PrismaticBarrier()
+	{
+		return new Buff()
+		{
+			FromType = UnitType.Self,
+			ToType = UnitType.Self,
+			Id = 235450,
+			Name = "Prismatic Barrier",
+			ChineseName = "棱光护体",
+			Description = "吸收伤害",
+			CurrentStack = 0,
+			EndDateTime = DateTime.MinValue
+		};
+	}
+
+	public static Buff GreaterInvisibility()
+	{
+		return new Buff()
+		{
+			FromType = UnitType.Self,
+			ToType = UnitType.Self,
+			Id = 110960,
+			Name = "Greater Invisibility",
+			ChineseName = "强效隐形",
+			Description = "隐形",
+			CurrentStack = 0,
+			EndDateTime = DateTime.MinValue
+		};
+	}
+
+	public static Buff IceBlock()
+	{
+		return new Buff()
+		{
+			FromType = UnitType.Self,
+			ToType = UnitType.Self,
+			Id = 45438,
+			Name = "Ice Block",
+			ChineseName = "寒冰屏障",
+			Description = "免疫所有伤害",
+			CurrentStack = 0,
+			EndDateTime = DateTime.MinValue
+		};
+	}
 }

@@ -25,8 +25,8 @@ end
 
 function aura_env:initializePlayerBuffData()
     aura_env.playerBuffList = {
-        ["keys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 461531, 263725, 383783, 384267, 365362, 448659, 451038 },
-        ["watchKeys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 263725, 383783, 384267, 365362, 451038 },
+        ["keys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 461531, 263725, 383783, 384267, 365362, 448659, 451038, 235450, 110960, 45438 },
+        ["watchKeys"] = { 1459, 210126, 449400, 448604, 451049, 384455, 116267, 449322, 383997, 458388, 453601, 451073, 263725, 383783, 384267, 365362, 451038, 235450, 110960, 45438 },
         [1459] = "奥术智慧",
         [210126] = "奥术魔宠",
         [449400] = "法术火焰宝珠",
@@ -46,6 +46,9 @@ function aura_env:initializePlayerBuffData()
         [365362] = "奥术涌动",
         [448659] = "奥术凤凰",
         [451038] = "奥术之魂",
+        [235450] = "棱光护体",
+        [110960] = "强效隐形",
+        [45438] = "寒冰屏障",
     }
 end
 
@@ -639,13 +642,13 @@ end
 
 function aura_env:updatePlayerBuffDataToTexture()
     for k, v in pairs(aura_env.playerBuffList["watchKeys"]) do
-       local buff = aura_env.playerBuffDataList[v]
-         if buff then
-              local r, g, b = aura_env:convertDebuffInfoToRGB(buff)
-              aura_env:setTextureColor("玩家自身Buff" .. k, r, g, b)
-         else
-              aura_env:setTextureColor("玩家自身Buff" .. k, 0, 0, 0)
-         end
+        local buff = aura_env.playerBuffDataList[v]
+        if buff then
+            local r, g, b = aura_env:convertDebuffInfoToRGB(buff)
+            aura_env:setTextureColor("玩家自身Buff" .. k, r, g, b)
+        else
+            aura_env:setTextureColor("玩家自身Buff" .. k, 0, 0, 0)
+        end
     end
 end
 
