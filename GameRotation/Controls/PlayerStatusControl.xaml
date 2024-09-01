@@ -6,7 +6,7 @@
 			xmlns:local="clr-namespace:GameRotation.Controls"
 			mc:Ignorable="d"
 			DataContext="{Binding RelativeSource={RelativeSource Self}}"
-			d:DesignHeight="Auto" d:DesignWidth="400">
+			d:DesignHeight="Auto" d:DesignWidth="Auto">
 	<StackPanel Orientation="Vertical">
 		<TextBlock FontSize="14" FontWeight="Bold" HorizontalAlignment="Center">玩家状态信息</TextBlock>
 		<TextBlock FontSize="14" HorizontalAlignment="Right" Text="{Binding CurrentTime}"></TextBlock>

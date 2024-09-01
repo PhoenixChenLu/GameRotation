@@ -114,6 +114,7 @@ public static partial class PlayerEnemyBuffs
 			Name = "Arcane Debilitation",
 			ChineseName = "奥术衰竭",
 			Description = "奥弹命中时产生，每层都能提高奥术飞弹、奥术冲击和奥术弹幕对目标造成的伤害",
+			Stackable = true,
 			CurrentStack = 0,
 			EndDateTime = DateTime.MinValue
 		};

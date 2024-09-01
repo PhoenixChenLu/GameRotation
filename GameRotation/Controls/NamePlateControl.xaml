@@ -5,38 +5,43 @@
 			xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			xmlns:local="clr-namespace:GameRotation.Controls"
 			mc:Ignorable="d"
-			d:DesignHeight="80" d:DesignWidth="220">
+			d:DesignHeight="300" d:DesignWidth="300">
 	<StackPanel Orientation="Vertical">
+		<TextBlock HorizontalAlignment="Center">姓名板状态信息</TextBlock>
 		<Grid>
-			<ProgressBar Height="20" x:Name="HealthBar"></ProgressBar>
-			<TextBlock x:Name="HealthText" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+			<Grid.RowDefinitions>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+				<RowDefinition></RowDefinition>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+				<ColumnDefinition></ColumnDefinition>
+			</Grid.ColumnDefinitions>
+			<local:SingleNamePlateControl Grid.Row="0" Grid.Column="0" x:Name="NamePlate1"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="0" Grid.Column="1" x:Name="NamePlate2"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="0" Grid.Column="2" x:Name="NamePlate3"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="0" Grid.Column="3" x:Name="NamePlate4"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="0" Grid.Column="4" x:Name="NamePlate5"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="1" Grid.Column="0" x:Name="NamePlate6"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="1" Grid.Column="1" x:Name="NamePlate7"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="1" Grid.Column="2" x:Name="NamePlate8"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="1" Grid.Column="3" x:Name="NamePlate9"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="1" Grid.Column="4" x:Name="NamePlate10"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="2" Grid.Column="0" x:Name="NamePlate11"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="2" Grid.Column="1" x:Name="NamePlate12"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="2" Grid.Column="2" x:Name="NamePlate13"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="2" Grid.Column="3" x:Name="NamePlate14"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="2" Grid.Column="4" x:Name="NamePlate15"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="3" Grid.Column="0" x:Name="NamePlate16"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="3" Grid.Column="1" x:Name="NamePlate17"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="3" Grid.Column="2" x:Name="NamePlate18"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="3" Grid.Column="3" x:Name="NamePlate19"></local:SingleNamePlateControl>
+			<local:SingleNamePlateControl Grid.Row="3" Grid.Column="4" x:Name="NamePlate20"></local:SingleNamePlateControl>
 		</Grid>
-		<Grid>
-			<ProgressBar Height="15" x:Name="DistanceBar" Maximum="13" Foreground="Brown" Background="LawnGreen"></ProgressBar>
-			<TextBlock x:Name="DistanceText" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-		</Grid>
-		<WrapPanel Orientation="Horizontal">
-			<local:Icon x:Name="ExistIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="AliveIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="CanAttackIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="InCombatIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="ThreatIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="CastingIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="ChannelingIcon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="CanInterruptIcon" Width="20" Height="20"></local:Icon>
-		</WrapPanel>
-		<WrapPanel Orientation="Horizontal">
-			<local:Icon x:Name="Debuff1Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff2Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff3Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff4Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff5Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff6Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff7Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff8Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff9Icon" Width="20" Height="20"></local:Icon>
-			<local:Icon x:Name="Debuff10Icon" Width="20" Height="20"></local:Icon>
-		</WrapPanel>
-
 	</StackPanel>
 </UserControl>

@@ -27,6 +27,6 @@ public partial class ScreenReadControl
 			ScreenSource = info.Image.ToBitmapImage();
 		});
 		PlayerStatusControl.DispatcherUpdateFromPlayerStatus(info.PlayerStatus);
-		
+		NamePlateStatusControl.UpdateFromAllInfo(info);
 	}
 }

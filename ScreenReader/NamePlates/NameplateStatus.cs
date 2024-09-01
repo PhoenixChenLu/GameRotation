@@ -56,6 +56,8 @@ public class NameplateStatus
 
 	public uint MaxHealth { get; set; }
 
+	public double HealthPercentage => (double)CurrentHealth / (double)MaxHealth;
+
 	public List<Buff> PlayerDebuffs { get; set; } = new();
 
 	public static NameplateStatus ArcaneMageNameplate()

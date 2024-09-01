@@ -33,6 +33,13 @@ public static class SpecializationDict
 
 	public static Specializations GetSpecialization(byte classIndex, byte index)
 	{
-		return ClassSpecializations[classIndex - 1][index - 1];
+		try
+		{
+			return ClassSpecializations[classIndex - 1][index - 1];
+		}
+		catch
+		{
+			return Specializations.Arcane_Mage;
+		}
 	}
 }

@@ -7,10 +7,11 @@
 			DataContext="{Binding RelativeSource={RelativeSource Self}}"
 			xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
 			mc:Ignorable="d"
-			d:DesignHeight="800" d:DesignWidth="550">
+			d:DesignHeight="1000" d:DesignWidth="Auto">
 	<Grid>
 		<DockPanel LastChildFill="False">
-			<StackPanel Width="250" Orientation="Vertical" DockPanel.Dock="Right">
+			<StackPanel Width="150" Orientation="Vertical" DockPanel.Dock="Left">
+				<Image DockPanel.Dock="Top" Width="150" Height="150" MinWidth="150" MinHeight="150" Source="{Binding ScreenSource}"></Image>
 				<TextBlock>宽度</TextBlock>
 				<xctk:IntegerUpDown Value="{Binding ScreenShotWidth}"></xctk:IntegerUpDown>
 				<TextBlock>高度</TextBlock>
@@ -39,8 +40,8 @@
 					</TextBlock>
 				</StackPanel>
 			</StackPanel>
-			<Image DockPanel.Dock="Top" Width="400" Height="400" MinWidth="400" MinHeight="400" Source="{Binding ScreenSource}"></Image>
-			<local:PlayerStatusControl DockPanel.Dock="Top" x:Name="PlayerStatusControl"></local:PlayerStatusControl>
+			<local:PlayerStatusControl DockPanel.Dock="Top" Width="360" x:Name="PlayerStatusControl"></local:PlayerStatusControl>
+			<local:NamePlateControl DockPanel.Dock="Top" x:Name="NamePlateStatusControl"></local:NamePlateControl>
 		</DockPanel>
 	</Grid>
 </UserControl>

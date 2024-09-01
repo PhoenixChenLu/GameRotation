@@ -7,7 +7,6 @@ public partial class NamePlateControl : UserControl
 	public NamePlateControl()
 	{
 		InitializeComponent();
-		InitializeSelfIcons();
-		InitializeStatusIcons();
+		InitializeSingleNamePlateControls();
 	}
 }

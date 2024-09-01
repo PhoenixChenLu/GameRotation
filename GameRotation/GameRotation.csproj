@@ -38,6 +38,12 @@
     <Compile Update="Controls\Icon_Update.cs">
       <DependentUpon>Icon.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Controls\SingleNamePlateControl_Data.cs">
+      <DependentUpon>SingleNamePlateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\SingleNamePlateControl_Function.cs">
+      <DependentUpon>SingleNamePlateControl.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Controls\NamePlateControl_Data.cs">
       <DependentUpon>NamePlateControl.xaml</DependentUpon>
     </Compile>
@@ -52,6 +58,13 @@
 
   <ItemGroup>
     <Folder Include="Resource\Icons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\SingleNamePlateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>NamePlateControl.xaml</DependentUpon>
+    </Page>
   </ItemGroup>
 
 </Project>
