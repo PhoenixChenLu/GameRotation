@@ -12,7 +12,7 @@ public partial class AllInfo
 		{
 			int xShift = (i % 20) * 3;
 			int yShift = (i / 20) * 45;
-			NameplateStatus[i].ReadFromBitmap(Image, xShift + 1, yShift + 7, CurrentTime);
+			NameplateStatus[i].ReadFromBitmap(Image, CurrentTime, xShift + 1, yShift + 7);
 		}
 	}
 }

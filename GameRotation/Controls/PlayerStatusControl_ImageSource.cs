@@ -20,9 +20,4 @@ public partial class PlayerStatusControl
 		ChannelingIcon.SetIconName("channeling");
 		GlobalCooldownIcon.SetIconName("gcd");
 	}
-
-	private void PlayerGlobalCooldownImage(bool gcd)
-	{
-		PlayerGlobalCooldownImageSource = gcd ? _imageSourceFolderPath + "gcd.jpg" : _imageSourceFolderPath + "gcd_bw.jpg";
-	}
 }

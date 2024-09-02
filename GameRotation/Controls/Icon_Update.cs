@@ -10,7 +10,7 @@ public partial class Icon
 		SetIconName(buff.Id.ToString());
 		if (buff.Exists)
 		{
-			SetCoolDown(buff.EndDateTime);
+			SetCoolDown(buff.DontShowTime ? 0 : buff.RemainingTime);
 			SwitchLight(true);
 			if (buff.Stackable)
 				SetStackCount(buff.CurrentStack);

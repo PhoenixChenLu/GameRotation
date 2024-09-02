@@ -28,6 +28,8 @@ public class Buff
 	public uint RemainingTime { get; set; }
 
 	public DateTime EndDateTime { get; set; }
+	
+	public bool DontShowTime { get; set; } = false;
 
 	public void SetEndTime(DateTime endTime)
 	{
@@ -36,6 +38,12 @@ public class Buff
 
 	public void UpdateFromColorAndCurrentTime(Color color, DateTime currentTime)
 	{
+
+		if (Id == 451049)
+		{
+			Console.WriteLine("pause");
+		}
+		
 		byte r = color.R;
 		byte g = color.G;
 		byte b = color.B;

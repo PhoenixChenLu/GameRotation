@@ -7,7 +7,7 @@ public static class NameplateStatusRead
 {
 	public static int Height = 3;
 
-	public static void ReadFromBitmap(this NameplateStatus status, Bitmap bmp, int startX, int startY, DateTime currentTime)
+	public static void ReadFromBitmap(this NameplateStatus status, Bitmap bmp, DateTime currentTime, int startX, int startY)
 	{
 		int scanX = startX;
 		int scanY = startY;

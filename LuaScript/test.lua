@@ -37,3 +37,13 @@ for i = 1, 40 do
 end
 
 return auras
+
+for i = 1, 40 do
+    local aura = C_UnitAuras.GetBuffDataByIndex("player", i, "player")
+    if aura then
+        if aura.spellId == 451049 then
+            print("力量的重担")
+            print(GetTime(), aura.expirationTime, aura.applications)
+        end
+    end
+end

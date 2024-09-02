@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using ScreenReader.NamePlates;
 using ScreenReader.Player;
+using WoWData.Buffs;
 using WoWData.Entities;
 
 namespace ScreenReader;
@@ -49,11 +50,16 @@ public partial class AllInfo
 	private void InitializeFromSpecialization(Specializations specialization)
 	{
 		NameplateStatus ??= new NameplateStatus[20];
-		
+
 		for (int i = 0; i < 20; i++)
 		{
 			NameplateStatus[i] = NamePlates.NameplateStatus.GenerateNameplateBySpec(specialization);
 		}
+
+		PlayerStatus = new PlayerStatus()
+		{
+			PlayerBuffList = PlayerSelfBuffs.ArcaneMageSelfBuffList(),
+		};
 	}
 
 	public void UpdateFromImage(Bitmap bmp)
@@ -69,6 +75,7 @@ public partial class AllInfo
 	private void ReadDataFromImage(uint ticks)
 	{
 		UpdateTime();
+		UpdateSpecialization(ticks);
 		UpdatePlayerStatus(ticks);
 		UpdateNameplateStatus(ticks);
 		DataUpdated?.Invoke(this);

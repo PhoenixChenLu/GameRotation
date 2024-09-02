@@ -13,7 +13,7 @@ public partial class PlayerStatusControl
 		CurrentMillisecond = currentTime.ToString();
 	}
 
-	public void SetPlayerStatus(bool playerAlive, bool playerInCombat, bool playerMounted, bool playerInVehicle, bool playerJumping, bool playerMoving, bool playerCasting, bool playerChanneling)
+	private void SetPlayerStatus(bool playerAlive, bool playerInCombat, bool playerMounted, bool playerInVehicle, bool playerJumping, bool playerMoving, bool playerCasting, bool playerChanneling)
 	{
 		AliveIcon.DispatchSwitchLight(playerAlive);
 		InCombatIcon.DispatchSwitchLight(playerInCombat);
@@ -25,7 +25,7 @@ public partial class PlayerStatusControl
 		ChannelingIcon.DispatchSwitchLight(playerChanneling);
 	}
 
-	public void SetPlayerHealth(uint currentHealth, uint maxHealth)
+	private void SetPlayerHealth(uint currentHealth, uint maxHealth)
 	{
 		PlayerHealthInfoString = $"{currentHealth}/{maxHealth}";
 		PlayerHealthPercentageString = $"{(double)currentHealth / (double)maxHealth:P}";
@@ -33,7 +33,7 @@ public partial class PlayerStatusControl
 		PlayerMaxHealthValue = maxHealth;
 	}
 
-	public void SetPlayerPower(uint currentPower, uint maxPower)
+	private void SetPlayerPower(uint currentPower, uint maxPower)
 	{
 		PlayerPowerInfoString = $"{currentPower}/{maxPower}";
 		PlayerPowerPercentageString = $"{(double)currentPower / (double)maxPower:P}";
@@ -41,23 +41,31 @@ public partial class PlayerStatusControl
 		PlayerMaxPowerValue = maxPower;
 	}
 
-	public void SetPlayerGlobalCooldown(uint globalCooldown)
+	private void SetPlayerGlobalCooldown(uint globalCooldown)
 	{
 		GlobalCooldownIcon.DispatchSwitchLight(globalCooldown > 0);
 		GlobalCooldownIcon.DispatchSetCoolDown(globalCooldown);
 	}
 
 
-	public void SetPlayerCastTime(PlayerStatus status)
+	private void SetPlayerCastTime(PlayerStatus status)
 	{
 		CastingIcon.DispatchSwitchLight(status.PlayerCasting);
 		CastingIcon.DispatchSetCoolDown(status.PlayerCasting ? status.PlayerRemainingCastTick : 0);
 	}
 
-	public void SetPlayerChannelTime(PlayerStatus status)
+	private void SetPlayerChannelTime(PlayerStatus status)
 	{
 		ChannelingIcon.DispatchSwitchLight(status.PlayerChanneling);
 		ChannelingIcon.DispatchSetCoolDown(status.PlayerChanneling ? status.PlayerRemainingChannelTick : 0);
+	}
+
+	private void SetPlayerBuffs(PlayerStatus status)
+	{
+		for (int i = 0; i < status.PlayerBuffList.Count; i++)
+		{
+			Icons[i].DispatchUpdateFromBuff(status.PlayerBuffList[i]);
+		}
 	}
 
 	private void UpdateFromPlayerStatus(PlayerStatus playerStatus)
@@ -69,6 +77,7 @@ public partial class PlayerStatusControl
 		SetPlayerGlobalCooldown(playerStatus.PlayerRemainingGlobalCooldownTicks);
 		SetPlayerCastTime(playerStatus);
 		SetPlayerChannelTime(playerStatus);
+		SetPlayerBuffs(playerStatus);
 	}
 
 	public void DispatcherUpdateFromPlayerStatus(PlayerStatus playerStatus)

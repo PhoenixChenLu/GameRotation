@@ -4,6 +4,32 @@ namespace WoWData.Buffs;
 
 public static partial class PlayerSelfBuffs
 {
+	public static List<Buff> ArcaneMageSelfBuffList()
+	{
+		List<Buff> buffList = new();
+		buffList.Add(ArcaneIntellect());
+		buffList.Add(ArcaneFamiliar());
+		buffList.Add(SpellFireSpheres_Generating());
+		buffList.Add(SpellFireSpheres_Generated());
+		buffList.Add(BurdenOfPower());
+		buffList.Add(ArcaneHarmony());
+		buffList.Add(IncantersFlow());
+		buffList.Add(ManaCascade());
+		buffList.Add(ArcaneTempo());
+		buffList.Add(AetherAttunement_Generating());
+		buffList.Add(AetherAttunement_Generated());
+		buffList.Add(GloriousIncandescence());
+		buffList.Add(ClearCasting());
+		buffList.Add(NetherPrecision());
+		buffList.Add(SiphonStorm());
+		buffList.Add(ArcaneSurge());
+		buffList.Add(ArcaneSoul());
+		buffList.Add(PrismaticBarrier());
+		buffList.Add(GreaterInvisibility());
+		buffList.Add(IceBlock());
+		return buffList;
+	}
+
 	public static Buff ArcaneIntellect()
 	{
 		return new Buff()
@@ -33,7 +59,7 @@ public static partial class PlayerSelfBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff SpellFireSpheres_Generating()
 	{
 		return new Buff()
@@ -49,7 +75,7 @@ public static partial class PlayerSelfBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff SpellFireSpheres_Generated()
 	{
 		return new Buff()
@@ -60,6 +86,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Spellfire Spheres",
 			ChineseName = "法术火焰宝珠",
 			Description = "已经生成的法术火焰宝珠，提供伤害加成，并且共给奥术凤凰消耗",
+			DontShowTime = true,
 			Stackable = true,
 			MaxStack = 3,
 			CurrentStack = 0,
@@ -77,6 +104,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Burden of Power",
 			ChineseName = "力量的重担",
 			Description = "下一个奥术冲击或者奥术弹幕的伤害提高30%",
+			Stackable = true,
 			CurrentStack = 0,
 			EndDateTime = DateTime.MinValue
 		};
@@ -92,13 +120,14 @@ public static partial class PlayerSelfBuffs
 			Name = "Arcane Harmony",
 			ChineseName = "奥术祥和",
 			Description = "奥术飞弹每次命中敌人后，都会使下一个奥术弹幕的伤害提高5%，最多叠加20次",
+			DontShowTime = true,
 			CurrentStack = 0,
 			Stackable = true,
 			MaxStack = 20,
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff IncantersFlow()
 	{
 		return new Buff()
@@ -109,6 +138,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Incanter's Flow",
 			ChineseName = "咒术洪流",
 			Description = "战斗时每层提高2%的法术伤害，最多叠加5次",
+			DontShowTime = true,
 			CurrentStack = 0,
 			Stackable = true,
 			MaxStack = 5,
@@ -160,13 +190,14 @@ public static partial class PlayerSelfBuffs
 			Name = "Aether Attunement",
 			ChineseName = "以太调谐",
 			Description = "每三次释放奥术飞弹，下一个奥术飞弹的伤害翻倍且变为AOE",
+			DontShowTime = true,
 			CurrentStack = 0,
 			Stackable = true,
 			MaxStack = 2,
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff AetherAttunement_Generated()
 	{
 		return new Buff()
@@ -181,7 +212,7 @@ public static partial class PlayerSelfBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff GloriousIncandescence()
 	{
 		return new Buff()
@@ -192,6 +223,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Glorious Incandescence",
 			ChineseName = "白炽耀焰",
 			Description = "消耗力量的重担之后，下一个奥术弹幕会召唤流星并产生4层奥术充能",
+			Stackable = true,
 			CurrentStack = 0,
 			EndDateTime = DateTime.MinValue
 		};
@@ -223,6 +255,7 @@ public static partial class PlayerSelfBuffs
 			Name = "Clear Casting",
 			ChineseName = "节能施法",
 			Description = "下一个奥术飞弹和奥爆的法力消耗减少100%",
+			Stackable = true,
 			CurrentStack = 0,
 			EndDateTime = DateTime.MinValue
 		};
@@ -290,7 +323,7 @@ public static partial class PlayerSelfBuffs
 			EndDateTime = DateTime.MinValue
 		};
 	}
-	
+
 	public static Buff ArcaneSoul()
 	{
 		return new Buff()

@@ -12,6 +12,7 @@ public partial class PlayerStatusControl : UserControl, INotifyPropertyChanged
 	{
 		InitializeComponent();
 		InitializeImagePath();
+		InitializeIcons();
 	}
 
 	public event PropertyChangedEventHandler? PropertyChanged;

@@ -1,3 +1,5 @@
+using System.Drawing;
+using System.Net.Mime;
 using ScreenReader.Player;
 using WoWData.Entities;
 
@@ -26,7 +28,13 @@ public partial class AllInfo
 
 	private void UpdatePlayerStatus(uint ticks)
 	{
-		PlayerStatus = PlayerStatusRead.ReadPlayerStatus(Image);
-		Specialization = PlayerStatus?.Specialization ?? Specializations.None;
+		PlayerStatus.ReadFromBitmap(Image, CurrentTime);
+	}
+
+	private void UpdateSpecialization(uint ticks)
+	{
+		if (Image is null) Specialization = Specializations.None;
+		Color specColor = Image.GetPixel(49, 1);
+		Specialization = SpecializationDict.GetSpecialization(specColor.R, specColor.G);
 	}
 }

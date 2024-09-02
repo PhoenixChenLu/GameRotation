@@ -31,5 +31,37 @@
 			<local:Icon Width="40" Height="40" x:Name="ChannelingIcon"></local:Icon>
 			<local:Icon Width="40" Height="40" x:Name="GlobalCooldownIcon"></local:Icon>
 		</StackPanel>
+		<WrapPanel Orientation="Horizontal">
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon1"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon2"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon3"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon4"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon5"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon6"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon7"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon8"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon9"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon10"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon11"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon12"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon13"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon14"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon15"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon16"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon17"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon18"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon19"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon20"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon21"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon22"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon23"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon24"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon25"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon26"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon27"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon28"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon29"></local:Icon>
+			<local:Icon Width="40" Height="40" x:Name="BuffIcon30"></local:Icon>
+		</WrapPanel>
 	</StackPanel>
 </UserControl>

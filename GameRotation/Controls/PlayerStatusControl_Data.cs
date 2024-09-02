@@ -1,4 +1,5 @@
 using System.Windows.Media;
+using WoWData.Buffs;
 
 namespace GameRotation.Controls;
 
@@ -92,59 +93,44 @@ public partial class PlayerStatusControl
 
 	#endregion
 
-	#region 公共冷却
+	#region 玩家Buff图标
 
-	private string _playerGlobalCooldownImageSource;
+	private Icon[] Icons = new Icon[30];
 
-	public string PlayerGlobalCooldownImageSource
+	private void InitializeIcons()
 	{
-		get => _playerGlobalCooldownImageSource;
-		set => SetField(ref _playerGlobalCooldownImageSource, value);
+		Icons[0] = BuffIcon1;
+		Icons[1] = BuffIcon2;
+		Icons[2] = BuffIcon3;
+		Icons[3] = BuffIcon4;
+		Icons[4] = BuffIcon5;
+		Icons[5] = BuffIcon6;
+		Icons[6] = BuffIcon7;
+		Icons[7] = BuffIcon8;
+		Icons[8] = BuffIcon9;
+		Icons[9] = BuffIcon10;
+		Icons[10] = BuffIcon11;
+		Icons[11] = BuffIcon12;
+		Icons[12] = BuffIcon13;
+		Icons[13] = BuffIcon14;
+		Icons[14] = BuffIcon15;
+		Icons[15] = BuffIcon16;
+		Icons[16] = BuffIcon17;
+		Icons[17] = BuffIcon18;
+		Icons[18] = BuffIcon19;
+		Icons[19] = BuffIcon20;
+		Icons[20] = BuffIcon21;
+		Icons[21] = BuffIcon22;
+		Icons[22] = BuffIcon23;
+		Icons[23] = BuffIcon24;
+		Icons[24] = BuffIcon25;
+		Icons[25] = BuffIcon26;
+		Icons[26] = BuffIcon27;
+		Icons[27] = BuffIcon28;
+		Icons[28] = BuffIcon29;
+		Icons[29] = BuffIcon30;
 	}
-
-	public string _playerGlobalCooldownTimerText;
-
-	public string PlayerGlobalCooldownTimerText
-	{
-		get => _playerGlobalCooldownTimerText;
-		set => SetField(ref _playerGlobalCooldownTimerText, value);
-	}
-
+	
 	#endregion
-
-	#region 施法和引导剩余时间
-
-	private string _playerIsCastingImageSource;
-
-	public string PlayerIsCastingImageSource
-	{
-		get => _playerIsCastingImageSource;
-		set => SetField(ref _playerIsCastingImageSource, value);
-	}
-
-	private string _playerCastingTimerText;
-
-	public string PlayerCastingTimerText
-	{
-		get => _playerCastingTimerText;
-		set => SetField(ref _playerCastingTimerText, value);
-	}
-
-	private string _playerIsChannelingImageSource;
-
-	public string PlayerIsChannelingImageSource
-	{
-		get => _playerIsChannelingImageSource;
-		set => SetField(ref _playerIsChannelingImageSource, value);
-	}
-
-	private string _playerChannelingTimerText;
-
-	public string PlayerChannelingTimerText
-	{
-		get => _playerChannelingTimerText;
-		set => SetField(ref _playerChannelingTimerText, value);
-	}
-
-	#endregion
+	
 }

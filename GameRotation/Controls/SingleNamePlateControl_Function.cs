@@ -68,6 +68,11 @@ public partial class SingleNamePlateControl
 		ChannelingIcon.DispatchSwitchLight(false);
 		CanInterruptIcon.DispatchSwitchLight(false);
 
+		HealthBar.Value = 0;
+		DistanceBar.Value = 0;
+		HealthText.Text = String.Empty;
+		DistanceText.Text = String.Empty;
+		
 		foreach (var icon in DebuffIcons)
 		{
 			icon.DispatchSwitchLight(false);

@@ -5,15 +5,13 @@ namespace ScreenReader.Player;
 
 public static class PlayerStatusRead
 {
-	public static int StartX = 0;
-	public static int StartY = 0;
 	public static int Width = 3;
 	public static int Height = 3;
 
-	public static PlayerStatus ReadPlayerStatus(Bitmap bmp)
+	public static void ReadFromBitmap(this PlayerStatus status, Bitmap bmp, DateTime currentTime, int startX = 1, int startY = 1)
 	{
-		int scanX = StartX + Width / 2;
-		int scanY = StartY + Height / 2;
+		int scanX = startX;
+		int scanY = startY;
 		Color[] colors = new Color[100];
 		int i = 0;
 		while (scanX < bmp.Width)
@@ -43,25 +41,30 @@ public static class PlayerStatusRead
 		uint playerChannelEndTick = Functions.ColorToUint(colors[14], colors[15]);
 		Specializations specialization = SpecializationDict.GetSpecialization(colors[16].R, colors[16].G);
 
-		return new PlayerStatus
+		status.CurrentTick = currentTick;
+		status.PlayerAlive = playerAlive;
+		status.PlayerInCombat = playerInCombat;
+		status.PlayerMounted = playerMounted;
+		status.PlayerInVehicle = playerInVehicle;
+		status.PlayerJumping = playerJumping;
+		status.PlayerMoving = playerMoving;
+		status.PlayerCasting = playerCasting;
+		status.PlayerChanneling = playerChanneling;
+		status.PlayerHealth = playerHealth;
+		status.PlayerMaxHealth = playerMaxHealth;
+		status.PlayerPower = playerPower;
+		status.PlayerMaxPower = playerMaxPower;
+		status.PlayerRemainingGlobalCooldownTicks = playerRemainingGCD;
+		status.PlayerCastEndTick = playerCastEndTick;
+		status.PlayerChannelEndTick = playerChannelEndTick;
+		status.Specialization = specialization;
+
+		scanY = startY + Height;
+		for (int j = 0; j < status.PlayerBuffList.Count; j++)
 		{
-			CurrentTick = currentTick,
-			PlayerAlive = playerAlive,
-			PlayerInCombat = playerInCombat,
-			PlayerMounted = playerMounted,
-			PlayerInVehicle = playerInVehicle,
-			PlayerJumping = playerJumping,
-			PlayerMoving = playerMoving,
-			PlayerCasting = playerCasting,
-			PlayerChanneling = playerChanneling,
-			PlayerHealth = playerHealth,
-			PlayerMaxHealth = playerMaxHealth,
-			PlayerPower = playerPower,
-			PlayerMaxPower = playerMaxPower,
-			PlayerRemainingGlobalCooldownTicks = playerRemainingGCD,
-			PlayerCastEndTick = playerCastEndTick,
-			PlayerChannelEndTick = playerChannelEndTick,
-			Specialization = specialization,
-		};
+			scanX = startX + j * Width;
+			Color color = bmp.GetPixel(scanX, scanY);
+			status.PlayerBuffList[j].UpdateFromColorAndCurrentTime(color, currentTime);
+		}
 	}
 }

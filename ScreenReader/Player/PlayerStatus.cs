@@ -1,4 +1,5 @@
-﻿using WoWData.Entities;
+﻿using WoWData.Buffs;
+using WoWData.Entities;
 
 namespace ScreenReader.Player;
 
@@ -53,4 +54,6 @@ public class PlayerStatus
 	public DateTime PlayerChannelEndTime => Functions.SystemStartTime + TimeSpan.FromMilliseconds(PlayerChannelEndTick);
 
 	public Specializations Specialization { get; set; }
+
+	public List<Buff> PlayerBuffList { get; set; } = new();
 }
