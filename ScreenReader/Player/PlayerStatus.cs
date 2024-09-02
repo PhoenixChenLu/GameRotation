@@ -36,6 +36,10 @@ public class PlayerStatus
 
 	public uint PlayerMaxPower { get; set; }
 
+	public double PlayerHaste { get; set; }
+
+	public uint PlayerGCD => (uint)(1500.0 / (1 + PlayerHaste / 100));
+
 	public double PlayerPowerPercentage => (double)PlayerPower / (double)PlayerMaxPower;
 
 	public uint PlayerRemainingGlobalCooldownTicks { get; set; }

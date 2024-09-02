@@ -40,6 +40,7 @@ public static class PlayerStatusRead
 		uint playerCastEndTick = Functions.ColorToUint(colors[12], colors[13]);
 		uint playerChannelEndTick = Functions.ColorToUint(colors[14], colors[15]);
 		Specializations specialization = SpecializationDict.GetSpecialization(colors[16].R, colors[16].G);
+		uint playerHaste = Functions.ColorToUint(colors[17]);
 
 		status.CurrentTick = currentTick;
 		status.PlayerAlive = playerAlive;
@@ -58,6 +59,7 @@ public static class PlayerStatusRead
 		status.PlayerCastEndTick = playerCastEndTick;
 		status.PlayerChannelEndTick = playerChannelEndTick;
 		status.Specialization = specialization;
+		status.PlayerHaste = playerHaste / 1000.0;
 
 		scanY = startY + Height;
 		for (int j = 0; j < status.PlayerBuffList.Count; j++)

@@ -180,6 +180,11 @@ function aura_env:readPlayerAlive()
     return aura_env.playerIsAlive
 end
 
+--- 读取玩家属性信息
+function aura_env:readPlayerHaste()
+    aura_env.spellHaste = UnitSpellHaste("player")
+end
+
 --- 读取玩家是否在战斗状态
 ---@return boolean 玩家是否在战斗状态
 function aura_env:readPlayerInCombat()
@@ -311,6 +316,7 @@ function aura_env:readAllPlayerData()
     aura_env:readPlayerPower()
     aura_env:readPlayerGCD()
     aura_env:readPlayerClassAndSpec()
+    aura_env:readPlayerHaste()
 end
 
 --- 获取玩家状态1
@@ -428,6 +434,15 @@ function aura_env:updatePlayerClassAndSpecToTexture()
     aura_env:setTextureColor("玩家职业专精", aura_env.playerClassId, aura_env.playerSpecId, 0)
 end
 
+function aura_env:updatePlayerHasteToTexture()
+    --- 将记录的急速信息乘以一千并取整
+    local haste = math.floor(aura_env.spellHaste * 1000)
+    --- 将急速信息转换为字节
+    local byte1, byte2, byte3 = aura_env:intToShortBytes(haste)
+    --- 设置材质颜色
+    aura_env:setTextureColor("玩家急速", byte1, byte2, byte3)
+end
+
 --- 更新所有玩家数据到材质
 ---@return void
 function aura_env:updateAllPlayerDataToTexture()
@@ -439,6 +454,7 @@ function aura_env:updateAllPlayerDataToTexture()
     aura_env:updatePlayerCastEndTimeToTexture()
     aura_env:updatePlayerChannelEndTimeToTexture()
     aura_env:updatePlayerClassAndSpecToTexture()
+    aura_env:updatePlayerHasteToTexture()
 end
 
 --- 获取单位所有的玩家造成的debuff
@@ -528,6 +544,7 @@ function aura_env:getUnitNameplateIndex(unit)
     end
     for k, v in pairs(aura_env.nameplateList) do
         if UnitIsUnit(unit, v.unitString) then
+            --print(unit.." is "..v.unitString)
             return k
         end
     end
@@ -545,7 +562,7 @@ function aura_env:readSpecialUnitData()
     aura_env.boss3Index = aura_env:getUnitNameplateIndex("boss3")
     aura_env.boss4Index = aura_env:getUnitNameplateIndex("boss4")
     aura_env.boss5Index = aura_env:getUnitNameplateIndex("boss5")
-    aura_env.boos6Index = aura_env:getUnitNameplateIndex("boss6")
+    aura_env.boss6Index = aura_env:getUnitNameplateIndex("boss6")
     aura_env.boss7Index = aura_env:getUnitNameplateIndex("boss7")
     aura_env.boss8Index = aura_env:getUnitNameplateIndex("boss8")
 end
@@ -699,7 +716,7 @@ function aura_env:updatePlayerSpellDataToTexture()
         local spell = aura_env.playerSpellDataList[v]
         if spell then
             if spell.duration > 0 then
-                local ticksRemains = (spell.startTime  + spell.duration) * 1000 - aura_env.currentMilliSeconds
+                local ticksRemains = (spell.startTime + spell.duration) * 1000 - aura_env.currentMilliSeconds
                 local r, g, b = aura_env:intToShortBytes(ticksRemains)
                 aura_env:setTextureColor("玩家技能状态" .. k, r, g, b)
             else
@@ -711,10 +728,19 @@ function aura_env:updatePlayerSpellDataToTexture()
     end
 end
 
+function aura_env:updateSpecialUnitDataToTexture()
+    aura_env:setTextureColor("特殊目标状态1", aura_env.targetIndex, aura_env.focusIndex, aura_env.mouseoverIndex)
+    aura_env:setTextureColor("特殊目标状态2", aura_env.boss1Index, aura_env.boss2Index, aura_env.boss3Index)
+    aura_env:setTextureColor("特殊目标状态3", aura_env.boss4Index, aura_env.boss5Index, aura_env.boss6Index)
+    aura_env:setTextureColor("特殊目标状态4", aura_env.boss7Index, aura_env.boss8Index, 0)
+end
+
 --- 更新所有姓名板数据到材质
 ---@return void
 function aura_env:updateAllNameplateDataToTexture()
     for i = 1, 40 do
         aura_env:updateNameplateDataToTexture(i)
     end
+    aura_env:readSpecialUnitData()
+    aura_env:updateSpecialUnitDataToTexture()
 end
