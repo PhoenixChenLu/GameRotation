@@ -3,6 +3,7 @@ using ScreenReader.NamePlates;
 using ScreenReader.Player;
 using WoWData.Buffs;
 using WoWData.Entities;
+using WoWData.Spells;
 
 namespace ScreenReader;
 
@@ -56,9 +57,14 @@ public partial class AllInfo
 			NameplateStatus[i] = NamePlates.NameplateStatus.GenerateNameplateBySpec(specialization);
 		}
 
+		(List<Spell> allSpell, List<Spell> watchingSpell) = PlayerSpells.GetPlayerSpellListBySpec(specialization);
+
 		PlayerStatus = new PlayerStatus()
 		{
-			PlayerBuffList = PlayerSelfBuffs.ArcaneMageSelfBuffList(),
+			Specialization = specialization,
+			PlayerBuffList = PlayerSelfBuffs.GetPlayerBuffListBySpec(specialization),
+			PlayerSpellList = allSpell,
+			PlayerWatchedSpellList = watchingSpell,
 		};
 	}
 

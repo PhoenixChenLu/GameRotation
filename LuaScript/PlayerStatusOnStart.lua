@@ -4,6 +4,7 @@
 function aura_env:initializeDataLists()
     aura_env.nameplateList = {}
     aura_env.playerBuffDataList = {}
+    aura_env.playerSpellDataList = {}
 end
 
 aura_env:initializeDataLists()
@@ -52,8 +53,35 @@ function aura_env:initializePlayerBuffData()
     }
 end
 
+function aura_env:initializePlayerSpellData()
+    aura_env.playerSpellList = {
+        ["keys"] = { 120, 122, 157981, 382440, 12472, 449700, 110959, 342245, 80353, 2139, 319836, 414660, 55342, 212653, 12051, 321507, 153626, 365350, 235450 },
+        ["watchKeys"] = { 120, 122, 157981, 382440, 12472, 449700, 110959, 342245, 80353, 2139, 319836, 414660, 55342, 212653, 12051, 321507, 153626, 365350, 235450 },
+        [120] = "冰锥术",
+        [122] = "冰霜新星",
+        [157981] = "冲击波",
+        [382440] = "变易幻能",
+        [12472] = "寒冰屏障",
+        [449700] = "引力失效",
+        [110959] = "强化隐形术",
+        [342245] = "操控时间",
+        [80353] = "时间扭曲",
+        [2139] = "法术反制",
+        [319836] = "火焰冲击",
+        [414660] = "群体屏障",
+        [55342] = "镜像",
+        [212653] = "闪光术",
+        [12051] = "唤醒",
+        [321507] = "魔法之触",
+        [153626] = "奥术宝珠",
+        [365350] = "奥术涌动",
+        [235450] = "棱光护体",
+    }
+end
+
 aura_env:initializeEnemyDebuffData()
 aura_env:initializePlayerBuffData()
+aura_env:initializePlayerSpellData()
 
 --- 将数字转换为字节
 ---@param num number 待转换的数字
@@ -536,6 +564,20 @@ function aura_env:readPlayerBuffData()
     end
 end
 
+--- 读取玩家所有有CD的法术数据
+---@return void
+function aura_env:readPlayerSpellData()
+    for k, v in pairs(aura_env.playerSpellDataList) do
+        aura_env.playerSpellDataList[k] = nil
+    end
+    for k, v in pairs(aura_env.playerSpellList.watchKeys) do
+        local spellData = C_Spell.GetSpellCooldown(v)
+        if spellData then
+            aura_env.playerSpellDataList[v] = spellData
+        end
+    end
+end
+
 --- 获取姓名板材质名称
 ---@param index number 索引
 ---@return table 姓名板材质名称
@@ -648,6 +690,23 @@ function aura_env:updatePlayerBuffDataToTexture()
             aura_env:setTextureColor("玩家自身Buff" .. k, r, g, b)
         else
             aura_env:setTextureColor("玩家自身Buff" .. k, 0, 0, 0)
+        end
+    end
+end
+
+function aura_env:updatePlayerSpellDataToTexture()
+    for k, v in pairs(aura_env.playerSpellList.watchKeys) do
+        local spell = aura_env.playerSpellDataList[v]
+        if spell then
+            if spell.duration > 0 then
+                local ticksRemains = (spell.startTime  + spell.duration) * 1000 - aura_env.currentMilliSeconds
+                local r, g, b = aura_env:intToShortBytes(ticksRemains)
+                aura_env:setTextureColor("玩家技能状态" .. k, r, g, b)
+            else
+                aura_env:setTextureColor("玩家技能状态" .. k, 0, 0, 0)
+            end
+        else
+            aura_env:setTextureColor("玩家技能状态" .. k, 0, 0, 0)
         end
     end
 end

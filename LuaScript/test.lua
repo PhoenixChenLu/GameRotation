@@ -47,3 +47,12 @@ for i = 1, 40 do
         end
     end
 end
+
+local coolDown = C_Spell.GetSpellCooldown(212653)
+print(coolDown.startTime, coolDown.duration, coolDown.isEnabled)
+
+local charges = C_Spell.GetSpellCharges(212653)
+print(charges.currentCharges, charges.maxCharges, charges.cooldownStartTime, charges.cooldownDuration)
+
+local inRange = C_Spell.IsSpellInRange(212653, "target")
+print(inRange)

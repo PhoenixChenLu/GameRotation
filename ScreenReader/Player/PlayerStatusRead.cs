@@ -66,5 +66,13 @@ public static class PlayerStatusRead
 			Color color = bmp.GetPixel(scanX, scanY);
 			status.PlayerBuffList[j].UpdateFromColorAndCurrentTime(color, currentTime);
 		}
+
+		scanY = startY + Height * 2;
+		for (int j = 0; j < status.PlayerWatchedSpellList.Count; j++)
+		{
+			scanX = startX + j * Width;
+			Color color = bmp.GetPixel(scanX, scanY);
+			status.PlayerWatchedSpellList[j].UpdateFromColor(color);
+		}
 	}
 }

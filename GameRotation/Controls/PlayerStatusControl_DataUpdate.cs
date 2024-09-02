@@ -64,7 +64,15 @@ public partial class PlayerStatusControl
 	{
 		for (int i = 0; i < status.PlayerBuffList.Count; i++)
 		{
-			Icons[i].DispatchUpdateFromBuff(status.PlayerBuffList[i]);
+			PlayerBuffIcons[i].DispatchUpdateFromBuff(status.PlayerBuffList[i]);
+		}
+	}
+
+	private void SetPlayerSpells(PlayerStatus status)
+	{
+		for (int i = 0; i < status.PlayerWatchedSpellList.Count; i++)
+		{
+			PlayerSpellIcons[i].DispatchUpdateFromSpell(status.PlayerWatchedSpellList[i]);
 		}
 	}
 
@@ -78,6 +86,8 @@ public partial class PlayerStatusControl
 		SetPlayerCastTime(playerStatus);
 		SetPlayerChannelTime(playerStatus);
 		SetPlayerBuffs(playerStatus);
+		SetPlayerSpells(playerStatus);
+		SetPlayerSpells(playerStatus);
 	}
 
 	public void DispatcherUpdateFromPlayerStatus(PlayerStatus playerStatus)

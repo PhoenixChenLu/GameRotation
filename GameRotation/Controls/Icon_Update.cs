@@ -1,5 +1,6 @@
 using GameRotation.Entities;
 using WoWData.Buffs;
+using WoWData.Spells;
 
 namespace GameRotation.Controls;
 
@@ -26,6 +27,18 @@ public partial class Icon
 	public void DispatchUpdateFromBuff(Buff buff)
 	{
 		Dispatcher.Invoke(() => UpdateFromBuff(buff));
+	}
+
+	private void UpdateFromSpell(Spell spell)
+	{
+		SetIconName(spell.Id.ToString());
+		SwitchLight(spell.CooldownRemaining == 0);
+		SetCoolDown(spell.CooldownRemaining);
+	}
+	
+	public void DispatchUpdateFromSpell(Spell spell)
+	{
+		Dispatcher.Invoke(() => UpdateFromSpell(spell));
 	}
 
 	public void SetIconName(string iconName)

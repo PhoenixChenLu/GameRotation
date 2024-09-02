@@ -1,5 +1,6 @@
 ﻿using WoWData.Buffs;
 using WoWData.Entities;
+using WoWData.Spells;
 
 namespace ScreenReader.Player;
 
@@ -56,4 +57,8 @@ public class PlayerStatus
 	public Specializations Specialization { get; set; }
 
 	public List<Buff> PlayerBuffList { get; set; } = new();
+
+	public List<Spell> PlayerSpellList { get; set; } = new();
+
+	public List<Spell> PlayerWatchedSpellList { get; set; } = new();
 }

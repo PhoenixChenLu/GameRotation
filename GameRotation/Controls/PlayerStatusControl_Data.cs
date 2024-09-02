@@ -95,42 +95,77 @@ public partial class PlayerStatusControl
 
 	#region 玩家Buff图标
 
-	private Icon[] Icons = new Icon[30];
+	private Icon[] PlayerBuffIcons = new Icon[30];
 
-	private void InitializeIcons()
+	private void InitializePlayerBuffIcons()
 	{
-		Icons[0] = BuffIcon1;
-		Icons[1] = BuffIcon2;
-		Icons[2] = BuffIcon3;
-		Icons[3] = BuffIcon4;
-		Icons[4] = BuffIcon5;
-		Icons[5] = BuffIcon6;
-		Icons[6] = BuffIcon7;
-		Icons[7] = BuffIcon8;
-		Icons[8] = BuffIcon9;
-		Icons[9] = BuffIcon10;
-		Icons[10] = BuffIcon11;
-		Icons[11] = BuffIcon12;
-		Icons[12] = BuffIcon13;
-		Icons[13] = BuffIcon14;
-		Icons[14] = BuffIcon15;
-		Icons[15] = BuffIcon16;
-		Icons[16] = BuffIcon17;
-		Icons[17] = BuffIcon18;
-		Icons[18] = BuffIcon19;
-		Icons[19] = BuffIcon20;
-		Icons[20] = BuffIcon21;
-		Icons[21] = BuffIcon22;
-		Icons[22] = BuffIcon23;
-		Icons[23] = BuffIcon24;
-		Icons[24] = BuffIcon25;
-		Icons[25] = BuffIcon26;
-		Icons[26] = BuffIcon27;
-		Icons[27] = BuffIcon28;
-		Icons[28] = BuffIcon29;
-		Icons[29] = BuffIcon30;
+		PlayerBuffIcons[0] = BuffIcon1;
+		PlayerBuffIcons[1] = BuffIcon2;
+		PlayerBuffIcons[2] = BuffIcon3;
+		PlayerBuffIcons[3] = BuffIcon4;
+		PlayerBuffIcons[4] = BuffIcon5;
+		PlayerBuffIcons[5] = BuffIcon6;
+		PlayerBuffIcons[6] = BuffIcon7;
+		PlayerBuffIcons[7] = BuffIcon8;
+		PlayerBuffIcons[8] = BuffIcon9;
+		PlayerBuffIcons[9] = BuffIcon10;
+		PlayerBuffIcons[10] = BuffIcon11;
+		PlayerBuffIcons[11] = BuffIcon12;
+		PlayerBuffIcons[12] = BuffIcon13;
+		PlayerBuffIcons[13] = BuffIcon14;
+		PlayerBuffIcons[14] = BuffIcon15;
+		PlayerBuffIcons[15] = BuffIcon16;
+		PlayerBuffIcons[16] = BuffIcon17;
+		PlayerBuffIcons[17] = BuffIcon18;
+		PlayerBuffIcons[18] = BuffIcon19;
+		PlayerBuffIcons[19] = BuffIcon20;
+		PlayerBuffIcons[20] = BuffIcon21;
+		PlayerBuffIcons[21] = BuffIcon22;
+		PlayerBuffIcons[22] = BuffIcon23;
+		PlayerBuffIcons[23] = BuffIcon24;
+		PlayerBuffIcons[24] = BuffIcon25;
+		PlayerBuffIcons[25] = BuffIcon26;
+		PlayerBuffIcons[26] = BuffIcon27;
+		PlayerBuffIcons[27] = BuffIcon28;
+		PlayerBuffIcons[28] = BuffIcon29;
+		PlayerBuffIcons[29] = BuffIcon30;
 	}
-	
+
+	private Icon[] PlayerSpellIcons = new Icon[30];
+
+	private void InitializePlayerSpellIcons()
+	{
+		PlayerSpellIcons[0] = PlayerSpellIcon1;
+		PlayerSpellIcons[1] = PlayerSpellIcon2;
+		PlayerSpellIcons[2] = PlayerSpellIcon3;
+		PlayerSpellIcons[3] = PlayerSpellIcon4;
+		PlayerSpellIcons[4] = PlayerSpellIcon5;
+		PlayerSpellIcons[5] = PlayerSpellIcon6;
+		PlayerSpellIcons[6] = PlayerSpellIcon7;
+		PlayerSpellIcons[7] = PlayerSpellIcon8;
+		PlayerSpellIcons[8] = PlayerSpellIcon9;
+		PlayerSpellIcons[9] = PlayerSpellIcon10;
+		PlayerSpellIcons[10] = PlayerSpellIcon11;
+		PlayerSpellIcons[11] = PlayerSpellIcon12;
+		PlayerSpellIcons[12] = PlayerSpellIcon13;
+		PlayerSpellIcons[13] = PlayerSpellIcon14;
+		PlayerSpellIcons[14] = PlayerSpellIcon15;
+		PlayerSpellIcons[15] = PlayerSpellIcon16;
+		PlayerSpellIcons[16] = PlayerSpellIcon17;
+		PlayerSpellIcons[17] = PlayerSpellIcon18;
+		PlayerSpellIcons[18] = PlayerSpellIcon19;
+		PlayerSpellIcons[19] = PlayerSpellIcon20;
+		PlayerSpellIcons[20] = PlayerSpellIcon21;
+		PlayerSpellIcons[21] = PlayerSpellIcon22;
+		PlayerSpellIcons[22] = PlayerSpellIcon23;
+		PlayerSpellIcons[23] = PlayerSpellIcon24;
+		PlayerSpellIcons[24] = PlayerSpellIcon25;
+		PlayerSpellIcons[25] = PlayerSpellIcon26;
+		PlayerSpellIcons[26] = PlayerSpellIcon27;
+		PlayerSpellIcons[27] = PlayerSpellIcon28;
+		PlayerSpellIcons[28] = PlayerSpellIcon29;
+		PlayerSpellIcons[29] = PlayerSpellIcon30;
+	}
+
 	#endregion
-	
 }

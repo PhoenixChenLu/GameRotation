@@ -2,6 +2,52 @@ namespace WoWData.Spells;
 
 public static partial class PlayerSpells
 {
+	public static List<Spell> ArcaneMageSpells()
+	{
+		List<Spell> spells = new List<Spell>();
+		spells.Add(ConeOfCold());
+		spells.Add(FrostNova());
+		spells.Add(BlastWave());
+		spells.Add(Polymorph());
+		spells.Add(ShiftingPower());
+		spells.Add(ArcaneIntellect());
+		spells.Add(ArcaneExplosion());
+		spells.Add(IceBlock());
+		spells.Add(FrostBolt());
+		spells.Add(GravityLapse());
+		spells.Add(GreaterInvisibility());
+		spells.Add(AlterTime());
+		spells.Add(TimeWarp());
+		spells.Add(CounterSpell());
+		spells.Add(SpellSteal());
+		spells.Add(FireBlast());
+		spells.Add(SlowFall());
+		spells.Add(MassBarrier());
+		spells.Add(MirrorImage());
+		spells.Add(Shimmer());
+		spells.Add(Displacement());
+		spells.Add(Evocation());
+		spells.Add(TouchOfTheMagi());
+		spells.Add(ArcaneBlast());
+		spells.Add(ChargedOrb());
+		spells.Add(ArcaneBarrage());
+		spells.Add(ArcaneSurge());
+		spells.Add(ArcaneMissiles());
+		spells.Add(PrismaticBarrier());
+		return spells;
+	}
+
+	public static List<Spell> ArcaneWatchingSpells(List<Spell> allSpells)
+	{
+		List<int> watchingIds = new List<int>
+		{
+			120, 122, 157981, 382440, 12472, 449700, 110959, 342245, 80353, 2139,
+			319836, 414660, 55342, 212653, 12051, 321507, 153626, 365350, 235450
+		};
+
+		return watchingIds.Select(id => allSpells.Single(spell => spell.Id == id)).ToList();
+	}
+
 	public static Spell ConeOfCold()
 	{
 		return new Spell()
@@ -90,7 +136,7 @@ public static partial class PlayerSpells
 			RequiresChanneling = false,
 		};
 	}
-	
+
 	public static Spell ArcaneIntellect()
 	{
 		return new Spell()
@@ -410,7 +456,7 @@ public static partial class PlayerSpells
 			RequiresChanneling = false,
 		};
 	}
-	
+
 	public static Spell ArcaneBlast()
 	{
 		return new Spell()
@@ -463,7 +509,7 @@ public static partial class PlayerSpells
 			RequiresChanneling = false,
 		};
 	}
-	
+
 	public static Spell ArcaneSurge()
 	{
 		return new Spell()
@@ -481,7 +527,7 @@ public static partial class PlayerSpells
 			RequiresChanneling = false,
 		};
 	}
-	
+
 	public static Spell ArcaneMissiles()
 	{
 		return new Spell()

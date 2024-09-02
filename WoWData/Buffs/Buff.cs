@@ -38,12 +38,6 @@ public class Buff
 
 	public void UpdateFromColorAndCurrentTime(Color color, DateTime currentTime)
 	{
-
-		if (Id == 451049)
-		{
-			Console.WriteLine("pause");
-		}
-		
 		byte r = color.R;
 		byte g = color.G;
 		byte b = color.B;
