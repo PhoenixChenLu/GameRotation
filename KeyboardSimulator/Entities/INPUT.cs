@@ -1,8 +1,8 @@
 ﻿namespace KeyboardSimulator.Entities;
 
-public struct Input
+public struct INPUT
 {
 	public uint Type;
 
-	public KeyboardInputData Data;
+	public MOUSEKEYBDHARDWAREINPUT Data;
 }

@@ -1,17 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows;
 using KeyboardHook;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
+using InputSimulator;
+using InputSimulator.Native;
 
 namespace GameRotation
 {
@@ -69,9 +61,13 @@ namespace GameRotation
 			Hook.SetAllKeyDownBinding(OnHookKeyDown);
 		}
 
-		private void OnHookKeyDown(long time, int flag, VKeys key, KeyboardState keyboardState)
+		private void OnHookKeyDown(KeyStrokeInfo strokeInfo, VKeys key, KeyboardState keyboardState)
 		{
-			this.Dispatcher.BeginInvoke(() => Message = $"KeyDown: {key} flag: {flag:B}");
+			this.Dispatcher.BeginInvoke(() => Message = $"KeyDown: {key} flag: {strokeInfo.Flags:b8} scanCode:{strokeInfo.ScanCode} time:{strokeInfo.Time} extraInfo: {strokeInfo.ExtraInfo}");
+			if((strokeInfo.Flags & 0b10000) == 0)
+			{
+				Task.Factory.StartNew(()=>PressSameKeyAfter5Seconds(key, keyboardState));
+			}
 		}
 
 		public event PropertyChangedEventHandler? PropertyChanged;
@@ -87,6 +83,35 @@ namespace GameRotation
 			field = value;
 			OnPropertyChanged(propertyName);
 			return true;
+		}
+
+		private InputSimulator.InputSimulator simulator = new InputSimulator.InputSimulator();
+
+		private void StartKeyPress(object sender, RoutedEventArgs e)
+		{
+			simulator.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LALT, VirtualKeyCode.KEY_Q);
+		}
+
+		private void StopKeyPress(object sender, RoutedEventArgs e)
+		{
+		}
+
+		private void PressSameKeyAfter5Seconds(VKeys key, KeyboardState state)
+		{
+			if (key is VKeys.ALT or VKeys.SHIFT or VKeys.CONTROL or VKeys.LWIN or VKeys.RWIN)
+			{
+				simulator.Keyboard.Sleep(5000).KeyPress((VirtualKeyCode)key);
+				return;
+			}
+
+			if (state.IsAltPressed || state.IsCtrlPressed || state.IsShiftPressed)
+			{
+				List<VKeys> modifierKeys = state.GetPressedKeys();
+				List<VirtualKeyCode> modifierKeyCodes = modifierKeys.Select(key => (VirtualKeyCode)key).ToList();
+				simulator.Keyboard.Sleep(5000).ModifiedKeyStroke(modifierKeyCodes, (VirtualKeyCode)key);
+			}
+
+			else simulator.Keyboard.Sleep(5000).KeyPress((VirtualKeyCode)key);
 		}
 	}
 }

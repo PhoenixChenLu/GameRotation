@@ -2,16 +2,45 @@
 
 public struct KeyboardState
 {
-	public bool IsCtrlPressed { get; set; }
-	public bool IsShiftPressed { get; set; }
-	public bool IsAltPressed { get; set; }
+	public bool LCtrlPressed { get; set; }
+
+	public bool RCtrlPressed { get; set; }
+
+	public bool IsCtrlPressed => LCtrlPressed || RCtrlPressed;
+
+	public bool LShiftPressed { get; set; }
+
+	public bool RShiftPressed { get; set; }
+
+	public bool IsShiftPressed => LShiftPressed || RShiftPressed;
+
+	public bool LAltPressed { get; set; }
+
+	public bool RAltPressed { get; set; }
+
+	public bool IsAltPressed => LAltPressed || RAltPressed;
 	public bool IsCapsLock { get; set; }
-	
-	public KeyboardState(bool isCtrlPressed, bool isShiftPressed, bool isAltPressed, bool isCapsLock)
+
+	public KeyboardState(bool lCtrlPressed, bool rCtrlPressed, bool lShiftPressed, bool rShiftPressed, bool lAltPressed, bool rAltPressed, bool isCapsLock)
 	{
-		IsCtrlPressed = isCtrlPressed;
-		IsShiftPressed = isShiftPressed;
-		IsAltPressed = isAltPressed;
+		LShiftPressed = lShiftPressed;
+		RShiftPressed = rShiftPressed;
+		LAltPressed = lAltPressed;
+		RAltPressed = rAltPressed;
+		LCtrlPressed = lCtrlPressed;
+		RCtrlPressed = rCtrlPressed;
 		IsCapsLock = isCapsLock;
+	}
+
+	public List<VKeys> GetPressedKeys()
+	{
+		var keys = new List<VKeys>();
+		if (LShiftPressed) keys.Add(VKeys.LSHIFT);
+		if (RShiftPressed) keys.Add(VKeys.RSHIFT);
+		if (LAltPressed) keys.Add(VKeys.LALT);
+		if (RAltPressed) keys.Add(VKeys.RALT);
+		if (LCtrlPressed) keys.Add(VKeys.LCONTROL);
+		if (RCtrlPressed) keys.Add(VKeys.RCONTROL);
+		return keys;
 	}
 }

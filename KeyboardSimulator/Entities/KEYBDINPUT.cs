@@ -1,6 +1,6 @@
 ﻿namespace KeyboardSimulator.Entities;
 
-public struct KeyboardInputData
+public struct KEYBDINPUT
 {
 	public ushort KeyCode;
 

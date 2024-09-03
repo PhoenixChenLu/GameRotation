@@ -40,19 +40,19 @@ public class KeyboardHook : IDisposable
 	/// <summary>
 	/// 所有按键按下都会触发的事件
 	/// </summary>
-	private (Action<long, int, VKeys, KeyboardState> action, bool intercept) _allKeyDownAction = (null, false);
+	private (Action<KeyStrokeInfo, VKeys, KeyboardState> action, bool intercept) _allKeyDownAction = (null, false);
 
 	/// <summary>
 	/// 所有按键弹起都会触发的事件
 	/// </summary>
-	private (Action<long, int, VKeys, KeyboardState> action, bool intercept) _allKeyUpAction = (null, false);
+	private (Action<KeyStrokeInfo, VKeys, KeyboardState> action, bool intercept) _allKeyUpAction = (null, false);
 
 	/// <summary>
 	/// 设定所有按键按下都会触发的事件
 	/// </summary>
 	/// <param name="action">所触发的动作</param>
 	/// <param name="intercept">是否截断信号</param>
-	public void SetAllKeyDownBinding(Action<long, int, VKeys, KeyboardState> action, bool intercept = false)
+	public void SetAllKeyDownBinding(Action<KeyStrokeInfo, VKeys, KeyboardState> action, bool intercept = false)
 	{
 		_allKeyDownAction = (action, intercept);
 	}
@@ -62,7 +62,7 @@ public class KeyboardHook : IDisposable
 	/// </summary>
 	/// <param name="action">所触发的动作</param>
 	/// <param name="intercept">是否截断信号</param>
-	public void SetAllKeyUpBinding(Action<long, int, VKeys, KeyboardState> action, bool intercept = false)
+	public void SetAllKeyUpBinding(Action<KeyStrokeInfo, VKeys, KeyboardState> action, bool intercept = false)
 	{
 		_allKeyUpAction = (action, intercept);
 	}
@@ -70,12 +70,12 @@ public class KeyboardHook : IDisposable
 	/// <summary>
 	/// 用于储存按下单个按键绑定的动作字典
 	/// </summary>
-	private Dictionary<KeyBinging, (Action<long, int> action, bool intercept)> _keyDownActions = new();
+	private Dictionary<KeyBinging, (Action<KeyStrokeInfo> action, bool intercept)> _keyDownActions = new();
 
 	/// <summary>
 	/// 用于储存弹起单个按键绑定的动作字典
 	/// </summary>
-	private Dictionary<KeyBinging, (Action<long, int> action, bool intercept)> _keyUpActions = new();
+	private Dictionary<KeyBinging, (Action<KeyStrokeInfo> action, bool intercept)> _keyUpActions = new();
 
 	/// <summary>
 	/// 设定按键按下的绑定
@@ -87,9 +87,9 @@ public class KeyboardHook : IDisposable
 	/// <param name="shiftState">是否按下Shift</param>
 	/// <param name="altState">是否按下Alt</param>
 	/// <param name="capsLock">是否开启大写锁定</param>
-	public void SetKeyDownBinding(VKeys key, Action<long, int> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
+	public void SetKeyDownBinding(VKeys key, Action<KeyStrokeInfo> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
-		_keyDownActions[new KeyBinging(key, new KeyboardState(ctrlState, shiftState, altState, capsLock))] = (action, intercept);
+		_keyDownActions[new KeyBinging(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
 	}
 
 	/// <summary>
@@ -102,17 +102,17 @@ public class KeyboardHook : IDisposable
 	/// <param name="shiftState">是否按下Shift</param>
 	/// <param name="altState">是否按下Alt</param>
 	/// <param name="capsLock">是否开启大写锁定</param>
-	public void SetKeyUpBinding(VKeys key, Action<long, int> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
+	public void SetKeyUpBinding(VKeys key, Action<KeyStrokeInfo> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
-		_keyUpActions[new KeyBinging(key, new KeyboardState(ctrlState, shiftState, altState, capsLock))] = (action, intercept);
+		_keyUpActions[new KeyBinging(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
 	}
 
-	public void SetKeyDownBinding(KeyBinging key, Action<long, int> action, bool intercept = false)
+	public void SetKeyDownBinding(KeyBinging key, Action<KeyStrokeInfo> action, bool intercept = false)
 	{
 		_keyDownActions[key] = (action, intercept);
 	}
 
-	public void SetKeyUpBinding(KeyBinging key, Action<long, int> action, bool intercept = false)
+	public void SetKeyUpBinding(KeyBinging key, Action<KeyStrokeInfo> action, bool intercept = false)
 	{
 		_keyUpActions[key] = (action, intercept);
 	}
@@ -161,13 +161,13 @@ public class KeyboardHook : IDisposable
 			{
 				if (_keyDownActions.TryGetValue(new KeyBinging(lParam.KeyCode, state), out var action))
 				{
-					action.action.Invoke(lParam.Time, lParam.Flags);
+					action.action.Invoke(lParam);
 					intercept = action.intercept;
 				}
 
 				if (_allKeyDownAction is (not null, _) allDownAction)
 				{
-					allDownAction.action.Invoke(lParam.Time, lParam.Flags, (VKeys)(lParam.KeyCode), state);
+					allDownAction.action.Invoke(lParam, (VKeys)(lParam.KeyCode), state);
 					intercept = intercept || allDownAction.intercept;
 				}
 
@@ -177,13 +177,13 @@ public class KeyboardHook : IDisposable
 			{
 				if (_keyUpActions.TryGetValue(new KeyBinging(lParam.KeyCode, state), out var action))
 				{
-					action.action.Invoke(lParam.Time, lParam.Flags);
+					action.action.Invoke(lParam);
 					intercept = action.intercept;
 				}
 
 				if (_allKeyUpAction is (not null, _) allUpAction)
 				{
-					allUpAction.action.Invoke(lParam.Time, lParam.Flags, (VKeys)(lParam.KeyCode), state);
+					allUpAction.action.Invoke(lParam, (VKeys)(lParam.KeyCode), state);
 					intercept = intercept || allUpAction.intercept;
 				}
 
@@ -205,9 +205,13 @@ public class KeyboardHook : IDisposable
 		short rShift = HookEx.GetKeyState((int)VKeys.RSHIFT);
 		short capsLock = HookEx.GetKeyState((int)VKeys.CAPITAL);
 
-		state.IsAltPressed = lAlt == -127 || rAlt == -127;
-		state.IsCtrlPressed = lCtrl == -127 || rCtrl == -127;
-		state.IsShiftPressed = lShift == -127 || rShift == -127;
+		state.LAltPressed = lAlt == -127;
+		state.RAltPressed = rAlt == -127;
+		state.LCtrlPressed = lCtrl == -127;
+		state.RCtrlPressed = rCtrl == -127;
+		state.LShiftPressed = lShift == -127;
+		state.RShiftPressed = rShift == -127;
+
 		state.IsCapsLock = (capsLock & 0x0001) != 0;
 
 		return state;

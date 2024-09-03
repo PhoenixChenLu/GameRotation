@@ -20,7 +20,7 @@ public static class ExternMethods
 	/// <param name="sizeOfInputStructure">单个输入信息的长度</param>
 	/// <returns>成功发起的输入的数量</returns>
 	[DllImport("user32.dll", SetLastError = true)]
-	public static extern uint SendInput(uint numberOfInputs, Input[] inputs, int sizeOfInputStructure);
+	public static extern uint SendInput(uint numberOfInputs, INPUT[] inputs, int sizeOfInputStructure);
 	
 	/// <summary>
 	/// 用于获取按键的扫描码

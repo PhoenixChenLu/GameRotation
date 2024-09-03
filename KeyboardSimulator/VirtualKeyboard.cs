@@ -5,16 +5,24 @@ namespace KeyboardSimulator;
 
 public class VirtualKeyboard
 {
-	private static bool SendInput(Input[] inputs)
+	private static bool SendInput(INPUT[] inputs)
 	{
-		var successInputs = ExternMethods.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(Input)));
+		var successInputs = ExternMethods.SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
 
 		return successInputs == inputs.Length;
 	}
 
+	/// <summary>
+	/// 按一下指定按键
+	/// </summary>
+	/// <param name="key">指定的按键</param>
+	/// <param name="alt">是否按下Alt键</param>
+	/// <param name="ctrl">是否按下Ctrl键</param>
+	/// <param name="shift">是否按下Shift键</param>
+	/// <returns>是否按键成功</returns>
 	public static bool Press(VKeys key, bool alt = false, bool ctrl = false, bool shift = false)
 	{
-		List<Input> inputs = new();
+		List<INPUT> inputs = new();
 
 		List<VKeys> altPressed = AltPressed(), ctrlPressed = CtrlPressed(), shiftPressed = ShiftPressed();
 
@@ -99,26 +107,39 @@ public class VirtualKeyboard
 					break;
 			}
 		}
-
+		
 		return SendInput(inputs.ToArray());
 	}
 
+	/// <summary>
+	/// 返回按下的Alt键列表
+	/// </summary>
+	/// <returns>已经按下的Alt键列表</returns>
 	private static List<VKeys> AltPressed()
 	{
+		// 创建一个用于存储按下的Alt键的列表
 		List<VKeys> keys = new();
+
+		// 检查左Alt键是否按下
 		if (ExternMethods.GetKeyState((int)VKeys.LALT) == -127)
 		{
 			keys.Add(VKeys.LALT);
 		}
 
+		// 检查右Alt键是否按下
 		if (ExternMethods.GetKeyState((int)VKeys.RALT) == -127)
 		{
 			keys.Add(VKeys.RALT);
 		}
 
+		// 返回按下的Alt键列表
 		return keys;
 	}
 
+	/// <summary>
+	/// 返回按下的Ctrl键列表
+	/// </summary>
+	/// <returns>已经按下的Ctrl键列表</returns>
 	private static List<VKeys> CtrlPressed()
 	{
 		List<VKeys> keys = new();
@@ -135,19 +156,29 @@ public class VirtualKeyboard
 		return keys;
 	}
 
+
+	/// <summary>
+	/// 返回按下的Shift键列表
+	/// </summary>
+	/// <returns>已经按下的Shift键列表</returns>
 	private static List<VKeys> ShiftPressed()
 	{
+		// 创建一个用于存储按下的Shift键的列表
 		List<VKeys> keys = new();
+
+		// 检查左Shift键是否按下
 		if (ExternMethods.GetKeyState((int)VKeys.LSHIFT) == -127)
 		{
 			keys.Add(VKeys.LSHIFT);
 		}
 
+		// 检查右Shift键是否按下
 		if (ExternMethods.GetKeyState((int)VKeys.RSHIFT) == -127)
 		{
 			keys.Add(VKeys.RSHIFT);
 		}
 
+		// 返回按下的Shift键列表
 		return keys;
 	}
 }

@@ -17,6 +17,7 @@
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"></RowDefinition>
 					<RowDefinition Height="Auto"></RowDefinition>
+					<RowDefinition Height="Auto"></RowDefinition>
 				</Grid.RowDefinitions>
 				<ListView>
 					<TextBlock Text="{Binding Path =Message, Mode=TwoWay}"></TextBlock>
@@ -25,7 +26,8 @@
 					<TextBlock Text="{Binding Path =SysKeyUp, Mode=TwoWay}"></TextBlock>
 					<TextBlock Text="{Binding Path =SysKeyDown, Mode=TwoWay}"></TextBlock>
 				</ListView>
-				<Button Grid.Row="1">按下按键</Button>
+				<Button Grid.Row="1" Click="StartKeyPress">开始连续按键</Button>
+				<Button Grid.Row="2" Click="StopKeyPress">停止按键</Button>
 			</Grid>
 		</TabItem>
 	</TabControl>

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InputSimulator\InputSimulator.csproj" />
     <ProjectReference Include="..\KeyboardHook\KeyboardHook.csproj" />
     <ProjectReference Include="..\ScreenReader\ScreenReader.csproj" />
   </ItemGroup>

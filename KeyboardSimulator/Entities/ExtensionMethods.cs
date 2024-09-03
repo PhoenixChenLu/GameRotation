@@ -22,40 +22,46 @@ public static class ExtensionMethods
 		return (uint)mapType;
 	}
 
-	public static Input Down(this VKeys key)
+	public static INPUT Down(this VKeys key)
 	{
-		return new Input()
+		return new INPUT()
 		{
 			Type = 1,
-			Data = new KeyboardInputData
+			Data = new MOUSEKEYBDHARDWAREINPUT()
 			{
-				KeyCode = (ushort)key,
-				ScanCode = (ushort)ExternMethods.MapVirtualKey(key.AsCode(), MapType.MAPVK_VK_TO_VSC.AsCode() & 0XFFU),
-				Flags = IsExtendedKey(key) ? (uint)KeyboardInputFlag.ExtendedKey : 0u,
-				Time = 0,
-				ExtraInfo = IntPtr.Zero
+				Keyboard = new KEYBDINPUT
+				{
+					KeyCode = (ushort)key,
+					ScanCode = (ushort)ExternMethods.MapVirtualKey(key.AsCode(), MapType.MAPVK_VK_TO_VSC.AsCode() & 0XFFU),
+					Flags = IsExtendedKey(key) ? (uint)KeyboardInputFlag.ExtendedKey : 0u,
+					Time = 0,
+					ExtraInfo = IntPtr.Zero
+				}
 			}
 		};
 	}
 
-	public static Input Up(this VKeys key)
+	public static INPUT Up(this VKeys key)
 	{
-		return new Input()
+		return new INPUT()
 		{
 			Type = 1,
-			Data = new KeyboardInputData
+			Data = new MOUSEKEYBDHARDWAREINPUT()
 			{
-				KeyCode = (ushort)key,
-				ScanCode = (ushort)ExternMethods.MapVirtualKey(key.AsCode(), MapType.MAPVK_VK_TO_VSC.AsCode() & 0XFFU),
-				Flags = IsExtendedKey(key) ? (uint)(KeyboardInputFlag.ExtendedKey | KeyboardInputFlag.KeyUp) : (uint)KeyboardInputFlag.KeyUp,
-				Time = 0,
-				ExtraInfo = IntPtr.Zero
+				Keyboard = new KEYBDINPUT
+				{
+					KeyCode = (ushort)key,
+					ScanCode = (ushort)ExternMethods.MapVirtualKey(key.AsCode(), MapType.MAPVK_VK_TO_VSC.AsCode() & 0XFFU),
+					Flags = IsExtendedKey(key) ? (uint)(KeyboardInputFlag.ExtendedKey | KeyboardInputFlag.KeyUp) : (uint)KeyboardInputFlag.KeyUp,
+					Time = 0,
+					ExtraInfo = IntPtr.Zero
+				}
 			}
 		};
 	}
 
-	public static List<Input> Press(this VKeys key)
+	public static List<INPUT> Press(this VKeys key)
 	{
-		return new List<Input>() { key.Down(), key.Up() };
+		return new List<INPUT>() { key.Down(), key.Up() };
 	}
 }

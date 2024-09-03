@@ -80,9 +80,9 @@ namespace InputSimulator
         /// </remarks>
         public static bool IsExtendedKey(VirtualKeyCode keyCode)
         {
-            if (keyCode == VirtualKeyCode.MENU ||
-                keyCode == VirtualKeyCode.LMENU ||
-                keyCode == VirtualKeyCode.RMENU ||
+            if (keyCode == VirtualKeyCode.ALT ||
+                keyCode == VirtualKeyCode.LALT ||
+                keyCode == VirtualKeyCode.RALT ||
                 keyCode == VirtualKeyCode.CONTROL ||
                 keyCode == VirtualKeyCode.RCONTROL ||
                 keyCode == VirtualKeyCode.INSERT ||
