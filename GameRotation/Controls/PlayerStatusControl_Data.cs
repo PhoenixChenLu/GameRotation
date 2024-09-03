@@ -131,41 +131,97 @@ public partial class PlayerStatusControl
 		PlayerBuffIcons[29] = BuffIcon30;
 	}
 
-	private Icon[] PlayerSpellIcons = new Icon[30];
+	private Icon[] WatchingSpellIcons = new Icon[30];
 
 	private void InitializePlayerSpellIcons()
 	{
-		PlayerSpellIcons[0] = PlayerSpellIcon1;
-		PlayerSpellIcons[1] = PlayerSpellIcon2;
-		PlayerSpellIcons[2] = PlayerSpellIcon3;
-		PlayerSpellIcons[3] = PlayerSpellIcon4;
-		PlayerSpellIcons[4] = PlayerSpellIcon5;
-		PlayerSpellIcons[5] = PlayerSpellIcon6;
-		PlayerSpellIcons[6] = PlayerSpellIcon7;
-		PlayerSpellIcons[7] = PlayerSpellIcon8;
-		PlayerSpellIcons[8] = PlayerSpellIcon9;
-		PlayerSpellIcons[9] = PlayerSpellIcon10;
-		PlayerSpellIcons[10] = PlayerSpellIcon11;
-		PlayerSpellIcons[11] = PlayerSpellIcon12;
-		PlayerSpellIcons[12] = PlayerSpellIcon13;
-		PlayerSpellIcons[13] = PlayerSpellIcon14;
-		PlayerSpellIcons[14] = PlayerSpellIcon15;
-		PlayerSpellIcons[15] = PlayerSpellIcon16;
-		PlayerSpellIcons[16] = PlayerSpellIcon17;
-		PlayerSpellIcons[17] = PlayerSpellIcon18;
-		PlayerSpellIcons[18] = PlayerSpellIcon19;
-		PlayerSpellIcons[19] = PlayerSpellIcon20;
-		PlayerSpellIcons[20] = PlayerSpellIcon21;
-		PlayerSpellIcons[21] = PlayerSpellIcon22;
-		PlayerSpellIcons[22] = PlayerSpellIcon23;
-		PlayerSpellIcons[23] = PlayerSpellIcon24;
-		PlayerSpellIcons[24] = PlayerSpellIcon25;
-		PlayerSpellIcons[25] = PlayerSpellIcon26;
-		PlayerSpellIcons[26] = PlayerSpellIcon27;
-		PlayerSpellIcons[27] = PlayerSpellIcon28;
-		PlayerSpellIcons[28] = PlayerSpellIcon29;
-		PlayerSpellIcons[29] = PlayerSpellIcon30;
+		WatchingSpellIcons[0] = WatchingSpellIcon1;
+		WatchingSpellIcons[1] = WatchingSpellIcon2;
+		WatchingSpellIcons[2] = WatchingSpellIcon3;
+		WatchingSpellIcons[3] = WatchingSpellIcon4;
+		WatchingSpellIcons[4] = WatchingSpellIcon5;
+		WatchingSpellIcons[5] = WatchingSpellIcon6;
+		WatchingSpellIcons[6] = WatchingSpellIcon7;
+		WatchingSpellIcons[7] = WatchingSpellIcon8;
+		WatchingSpellIcons[8] = WatchingSpellIcon9;
+		WatchingSpellIcons[9] = WatchingSpellIcon10;
+		WatchingSpellIcons[10] = WatchingSpellIcon11;
+		WatchingSpellIcons[11] = WatchingSpellIcon12;
+		WatchingSpellIcons[12] = WatchingSpellIcon13;
+		WatchingSpellIcons[13] = WatchingSpellIcon14;
+		WatchingSpellIcons[14] = WatchingSpellIcon15;
+		WatchingSpellIcons[15] = WatchingSpellIcon16;
+		WatchingSpellIcons[16] = WatchingSpellIcon17;
+		WatchingSpellIcons[17] = WatchingSpellIcon18;
+		WatchingSpellIcons[18] = WatchingSpellIcon19;
+		WatchingSpellIcons[19] = WatchingSpellIcon20;
+		WatchingSpellIcons[20] = WatchingSpellIcon21;
+		WatchingSpellIcons[21] = WatchingSpellIcon22;
+		WatchingSpellIcons[22] = WatchingSpellIcon23;
+		WatchingSpellIcons[23] = WatchingSpellIcon24;
+		WatchingSpellIcons[24] = WatchingSpellIcon25;
+		WatchingSpellIcons[25] = WatchingSpellIcon26;
+		WatchingSpellIcons[26] = WatchingSpellIcon27;
+		WatchingSpellIcons[27] = WatchingSpellIcon28;
+		WatchingSpellIcons[28] = WatchingSpellIcon29;
+		WatchingSpellIcons[29] = WatchingSpellIcon30;
 	}
 
 	#endregion
+
+	private Icon[] AllSpellIcons = new Icon[50];
+
+	private void InitializeAllSpellIcons()
+	{
+		AllSpellIcons[0] = AllSpellIcon1;
+		AllSpellIcons[1] = AllSpellIcon2;
+		AllSpellIcons[2] = AllSpellIcon3;
+		AllSpellIcons[3] = AllSpellIcon4;
+		AllSpellIcons[4] = AllSpellIcon5;
+		AllSpellIcons[5] = AllSpellIcon6;
+		AllSpellIcons[6] = AllSpellIcon7;
+		AllSpellIcons[7] = AllSpellIcon8;
+		AllSpellIcons[8] = AllSpellIcon9;
+		AllSpellIcons[9] = AllSpellIcon10;
+		AllSpellIcons[10] = AllSpellIcon11;
+		AllSpellIcons[11] = AllSpellIcon12;
+		AllSpellIcons[12] = AllSpellIcon13;
+		AllSpellIcons[13] = AllSpellIcon14;
+		AllSpellIcons[14] = AllSpellIcon15;
+		AllSpellIcons[15] = AllSpellIcon16;
+		AllSpellIcons[16] = AllSpellIcon17;
+		AllSpellIcons[17] = AllSpellIcon18;
+		AllSpellIcons[18] = AllSpellIcon19;
+		AllSpellIcons[19] = AllSpellIcon20;
+		AllSpellIcons[20] = AllSpellIcon21;
+		AllSpellIcons[21] = AllSpellIcon22;
+		AllSpellIcons[22] = AllSpellIcon23;
+		AllSpellIcons[23] = AllSpellIcon24;
+		AllSpellIcons[24] = AllSpellIcon25;
+		AllSpellIcons[25] = AllSpellIcon26;
+		AllSpellIcons[26] = AllSpellIcon27;
+		AllSpellIcons[27] = AllSpellIcon28;
+		AllSpellIcons[28] = AllSpellIcon29;
+		AllSpellIcons[29] = AllSpellIcon30;
+		AllSpellIcons[30] = AllSpellIcon31;
+		AllSpellIcons[31] = AllSpellIcon32;
+		AllSpellIcons[32] = AllSpellIcon33;
+		AllSpellIcons[33] = AllSpellIcon34;
+		AllSpellIcons[34] = AllSpellIcon35;
+		AllSpellIcons[35] = AllSpellIcon36;
+		AllSpellIcons[36] = AllSpellIcon37;
+		AllSpellIcons[37] = AllSpellIcon38;
+		AllSpellIcons[38] = AllSpellIcon39;
+		AllSpellIcons[39] = AllSpellIcon40;
+		AllSpellIcons[40] = AllSpellIcon41;
+		AllSpellIcons[41] = AllSpellIcon42;
+		AllSpellIcons[42] = AllSpellIcon43;
+		AllSpellIcons[43] = AllSpellIcon44;
+		AllSpellIcons[44] = AllSpellIcon45;
+		AllSpellIcons[45] = AllSpellIcon46;
+		AllSpellIcons[46] = AllSpellIcon47;
+		AllSpellIcons[47] = AllSpellIcon48;
+		AllSpellIcons[48] = AllSpellIcon49;
+		AllSpellIcons[49] = AllSpellIcon50;
+	}
 }

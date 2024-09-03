@@ -1,3 +1,5 @@
+using KeyboardHook;
+
 namespace WoWData.Spells;
 
 public static partial class PlayerSpells
@@ -63,6 +65,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_E, shiftState: true),
 		};
 	}
 
@@ -81,6 +84,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_R, shiftState: true),
 		};
 	}
 
@@ -98,6 +102,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_A, shiftState: true),
 		};
 	}
 
@@ -116,6 +121,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = true,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_D, altState: true),
 		};
 	}
 
@@ -134,6 +140,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = true,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_Q, altState: true),
 		};
 	}
 
@@ -152,6 +159,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_W, shiftState: true),
 		};
 	}
 
@@ -170,6 +178,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_W, altState: true),
 		};
 	}
 
@@ -187,6 +196,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_4, altState: true),
 		};
 	}
 
@@ -205,6 +215,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = true,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_3, shiftState:true),
 		};
 	}
 
@@ -222,6 +233,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_R, altState:true),
 		};
 	}
 
@@ -239,6 +251,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_3, altState:true),
 		};
 	}
 
@@ -257,6 +270,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_C, shiftState:true),
 		};
 	}
 
@@ -275,6 +289,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_S, altState:true),
 		};
 	}
 
@@ -294,6 +309,7 @@ public static partial class PlayerSpells
 			RequiresCasting = false,
 			RequiresChanneling = false,
 			CanBeCastWhileCasting = true,
+			KeyBinding = new KeyBinding(VKeys.KEY_A, altState:true),
 		};
 	}
 
@@ -312,6 +328,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_F, altState:true),
 		};
 	}
 
@@ -330,6 +347,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_4, shiftState:true),
 		};
 	}
 
@@ -347,6 +365,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_C, altState:true),
 		};
 	}
 
@@ -365,6 +384,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_Z, altState:true),
 		};
 	}
 
@@ -383,6 +403,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_5),
 		};
 	}
 
@@ -402,6 +423,7 @@ public static partial class PlayerSpells
 			RequiresCasting = false,
 			RequiresChanneling = false,
 			CanBeCastWhileCasting = true,
+			KeyBinding = new KeyBinding(VKeys.KEY_1, altState:true),
 		};
 	}
 
@@ -419,6 +441,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_Z, altState:true),
 		};
 	}
 
@@ -436,6 +459,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = true,
+			KeyBinding = new KeyBinding(VKeys.KEY_4),
 		};
 	}
 
@@ -454,6 +478,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.OEM_3),
 		};
 	}
 
@@ -472,6 +497,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = true,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_2),
 		};
 	}
 
@@ -490,6 +516,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_E, shiftState:true),
 		};
 	}
 
@@ -507,6 +534,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_3),
 		};
 	}
 
@@ -525,6 +553,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = false,
 			RequiresCasting = true,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.OEM_3, altState:true),
 		};
 	}
 
@@ -543,6 +572,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = true,
+			KeyBinding = new KeyBinding(VKeys.KEY_1),
 		};
 	}
 
@@ -561,6 +591,7 @@ public static partial class PlayerSpells
 			CanBeCastWhileMoving = true,
 			RequiresCasting = false,
 			RequiresChanneling = false,
+			KeyBinding = new KeyBinding(VKeys.KEY_2, altState:true),
 		};
 	}
 }

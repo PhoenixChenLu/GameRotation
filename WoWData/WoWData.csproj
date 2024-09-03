@@ -24,4 +24,8 @@
       </Compile>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\KeyboardHook\KeyboardHook.csproj" />
+    </ItemGroup>
+
 </Project>

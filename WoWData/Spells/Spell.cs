@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using KeyboardHook;
 
 namespace WoWData.Spells;
 
@@ -42,4 +43,6 @@ public class Spell
 	{
 		CooldownRemaining = (uint)color.R << 16 | (uint)color.G << 8 | color.B;
 	}
+
+	public KeyBinding KeyBinding { get; set; }
 }

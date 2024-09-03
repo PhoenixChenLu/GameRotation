@@ -64,10 +64,10 @@ namespace GameRotation
 		private void OnHookKeyDown(KeyStrokeInfo strokeInfo, VKeys key, KeyboardState keyboardState)
 		{
 			this.Dispatcher.BeginInvoke(() => Message = $"KeyDown: {key} flag: {strokeInfo.Flags:b8} scanCode:{strokeInfo.ScanCode} time:{strokeInfo.Time} extraInfo: {strokeInfo.ExtraInfo}");
-			if((strokeInfo.Flags & 0b10000) == 0)
-			{
-				Task.Factory.StartNew(()=>PressSameKeyAfter5Seconds(key, keyboardState));
-			}
+			// if((strokeInfo.Flags & 0b10000) == 0)
+			// {
+			// 	Task.Factory.StartNew(()=>PressSameKeyAfter5Seconds(key, keyboardState));
+			// }
 		}
 
 		public event PropertyChangedEventHandler? PropertyChanged;

@@ -32,6 +32,14 @@ public struct KeyboardState
 		IsCapsLock = isCapsLock;
 	}
 
+	public KeyboardState(bool ctrlPressed, bool shiftPressed, bool altPressed, bool isCapsLock)
+	{
+		LShiftPressed = shiftPressed;
+		LAltPressed = altPressed;
+		LCtrlPressed = ctrlPressed;
+		IsCapsLock = isCapsLock;
+	}
+
 	public List<VKeys> GetPressedKeys()
 	{
 		var keys = new List<VKeys>();
@@ -42,5 +50,15 @@ public struct KeyboardState
 		if (LCtrlPressed) keys.Add(VKeys.LCONTROL);
 		if (RCtrlPressed) keys.Add(VKeys.RCONTROL);
 		return keys;
+	}
+
+	public override string ToString()
+	{
+		string result = "";
+		if (IsCtrlPressed) result += "C";
+		if (IsAltPressed) result += "A";
+		if (IsShiftPressed) result += "S";
+		if (result.Length > 0) result += "-";
+		return result;
 	}
 }

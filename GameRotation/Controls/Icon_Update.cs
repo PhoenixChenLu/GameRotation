@@ -41,6 +41,18 @@ public partial class Icon
 		Dispatcher.Invoke(() => UpdateFromSpell(spell));
 	}
 
+	private void UpdateFromSpellKeyBinding(Spell spell)
+	{
+		SetIconName(spell.Id.ToString());
+		SwitchLight(true);
+		StackCountText = spell.KeyBinding.ToString();
+	}
+	
+	public void DispatchUpdateFromSpellKeyBinding(Spell spell)
+	{
+		Dispatcher.Invoke(() => UpdateFromSpellKeyBinding(spell));
+	}
+
 	public void SetIconName(string iconName)
 	{
 		_imageFileName = iconName;

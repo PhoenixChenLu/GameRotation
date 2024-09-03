@@ -1,4 +1,6 @@
-﻿namespace KeyboardHook;
+﻿using System.Runtime.Serialization;
+
+namespace KeyboardHook;
 
 public struct KeyBinding
 {
@@ -15,5 +17,16 @@ public struct KeyBinding
 	{
 		Key = (VKeys)keyCode;
 		KeyboardState = keyboardState;
+	}
+
+	public KeyBinding(VKeys key, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
+	{
+		Key = key;
+		KeyboardState = new KeyboardState(ctrlState, shiftState, altState, capsLock);
+	}
+
+	public override string ToString()
+	{
+		return KeyboardState.ToString() + Key.GetString();
 	}
 }
