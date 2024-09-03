@@ -7,7 +7,7 @@
 		xmlns:local="clr-namespace:GameRotation"
 		mc:Ignorable="d"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}"
-		Title="MainWindow" Height="700" Width="700">
+		Title="MainWindow" Height="720" Width="1280">
 	<TabControl>
 		<TabItem Header="屏幕">
 			<controls:ScreenReadControl></controls:ScreenReadControl>

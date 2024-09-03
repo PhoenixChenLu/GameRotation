@@ -40,7 +40,7 @@
 					</TextBlock>
 				</StackPanel>
 			</StackPanel>
-			<local:PlayerStatusControl DockPanel.Dock="Top" Width="360" x:Name="PlayerStatusControl"></local:PlayerStatusControl>
+			<local:PlayerStatusControl DockPanel.Dock="Left" Width="360" x:Name="PlayerStatusControl"></local:PlayerStatusControl>
 			<local:NamePlateControl DockPanel.Dock="Top" x:Name="NamePlateStatusControl"></local:NamePlateControl>
 		</DockPanel>
 	</Grid>
