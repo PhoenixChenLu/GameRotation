@@ -1,17 +1,17 @@
 ﻿namespace KeyboardHook;
 
-public struct KeyBinging
+public struct KeyBinding
 {
 	public VKeys Key { get; set; }
 	public KeyboardState KeyboardState { get; set; }
 
-	public KeyBinging(VKeys key, KeyboardState keyboardState)
+	public KeyBinding(VKeys key, KeyboardState keyboardState)
 	{
 		Key = key;
 		KeyboardState = keyboardState;
 	}
 
-	public KeyBinging(int keyCode, KeyboardState keyboardState)
+	public KeyBinding(int keyCode, KeyboardState keyboardState)
 	{
 		Key = (VKeys)keyCode;
 		KeyboardState = keyboardState;

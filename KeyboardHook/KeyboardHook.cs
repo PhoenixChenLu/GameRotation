@@ -70,12 +70,12 @@ public class KeyboardHook : IDisposable
 	/// <summary>
 	/// 用于储存按下单个按键绑定的动作字典
 	/// </summary>
-	private Dictionary<KeyBinging, (Action<KeyStrokeInfo> action, bool intercept)> _keyDownActions = new();
+	private Dictionary<KeyBinding, (Action<KeyStrokeInfo> action, bool intercept)> _keyDownActions = new();
 
 	/// <summary>
 	/// 用于储存弹起单个按键绑定的动作字典
 	/// </summary>
-	private Dictionary<KeyBinging, (Action<KeyStrokeInfo> action, bool intercept)> _keyUpActions = new();
+	private Dictionary<KeyBinding, (Action<KeyStrokeInfo> action, bool intercept)> _keyUpActions = new();
 
 	/// <summary>
 	/// 设定按键按下的绑定
@@ -89,7 +89,7 @@ public class KeyboardHook : IDisposable
 	/// <param name="capsLock">是否开启大写锁定</param>
 	public void SetKeyDownBinding(VKeys key, Action<KeyStrokeInfo> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
-		_keyDownActions[new KeyBinging(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
+		_keyDownActions[new KeyBinding(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
 	}
 
 	/// <summary>
@@ -104,25 +104,25 @@ public class KeyboardHook : IDisposable
 	/// <param name="capsLock">是否开启大写锁定</param>
 	public void SetKeyUpBinding(VKeys key, Action<KeyStrokeInfo> action, bool intercept = false, bool ctrlState = false, bool shiftState = false, bool altState = false, bool capsLock = false)
 	{
-		_keyUpActions[new KeyBinging(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
+		_keyUpActions[new KeyBinding(key, new KeyboardState(ctrlState, false, shiftState, false, altState, false, capsLock))] = (action, intercept);
 	}
 
-	public void SetKeyDownBinding(KeyBinging key, Action<KeyStrokeInfo> action, bool intercept = false)
+	public void SetKeyDownBinding(KeyBinding key, Action<KeyStrokeInfo> action, bool intercept = false)
 	{
 		_keyDownActions[key] = (action, intercept);
 	}
 
-	public void SetKeyUpBinding(KeyBinging key, Action<KeyStrokeInfo> action, bool intercept = false)
+	public void SetKeyUpBinding(KeyBinding key, Action<KeyStrokeInfo> action, bool intercept = false)
 	{
 		_keyUpActions[key] = (action, intercept);
 	}
 
-	public void UnbindKeyDown(KeyBinging key)
+	public void UnbindKeyDown(KeyBinding key)
 	{
 		_keyDownActions.Remove(key);
 	}
 
-	public void UnbindKeyUp(KeyBinging key)
+	public void UnbindKeyUp(KeyBinding key)
 	{
 		_keyUpActions.Remove(key);
 	}
@@ -159,7 +159,7 @@ public class KeyboardHook : IDisposable
 		{
 			case (IntPtr)WMKeys.WM_KEYDOWN or (IntPtr)WMKeys.WM_SYSKEYDOWN:
 			{
-				if (_keyDownActions.TryGetValue(new KeyBinging(lParam.KeyCode, state), out var action))
+				if (_keyDownActions.TryGetValue(new KeyBinding(lParam.KeyCode, state), out var action))
 				{
 					action.action.Invoke(lParam);
 					intercept = action.intercept;
@@ -175,7 +175,7 @@ public class KeyboardHook : IDisposable
 			}
 			case (IntPtr)WMKeys.WM_KEYUP or (IntPtr)WMKeys.WM_SYSKEYUP:
 			{
-				if (_keyUpActions.TryGetValue(new KeyBinging(lParam.KeyCode, state), out var action))
+				if (_keyUpActions.TryGetValue(new KeyBinding(lParam.KeyCode, state), out var action))
 				{
 					action.action.Invoke(lParam);
 					intercept = action.intercept;
